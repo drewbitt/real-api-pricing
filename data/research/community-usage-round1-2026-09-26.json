@@ -1,6 +1,6 @@
 {
   "collectedAt": "2026-09-26",
-  "scope": "User-reported subscription usage measurements forwarded by @drewbitt (X posts / community reposts / a personal log study). Evidence-only round: raw observations, derivations, and cross-checks against adopted rows are recorded; NO adopted values are changed in this PR. Per project convention, conflicting sources are all recorded and the maintainer adjudicates.",
+  "scope": "User-reported subscription usage measurements forwarded by @drewbitt (X posts / community reposts / a personal log study), plus a same-day web sweep of telemetry-backed reports (openai/codex GitHub issues, a measured Claude meter-weights study, Reddit Grok quota threads, quota-tracking sites). Evidence-only round: raw observations, derivations, and cross-checks against adopted rows are recorded; adopted VALUES are unchanged (confidence tiers on contested derivations are lowered per convention). Per project convention, conflicting sources are all recorded and the maintainer adjudicates.",
   "method": "Each source's raw panel/tracker/log figures are kept as reported; implied pools are computed as reported_tokens / reported_quota_fraction; monthly = weekly × 4 (project standard). Dollar figures reported by trackers are list-price equivalents (worth口径) and are recorded as corroboration only, never converted to tokens. Screenshots are NOT committed (data/research is JSON-only); they are embedded in the PR body for review and the X permalinks are the provenance.",
   "sources": [
     {
@@ -238,21 +238,181 @@
       "adoptionImpact": "context only — ambiguous account count, no quota % shown; cannot derive a pool value",
       "caveats": ["account count interpretation unresolved", "no weekly % reading"],
       "confidence": "unusable for adoption; context"
+    },
+    {
+      "id": "gh36313-full-window-telemetry",
+      "type": "github_issue_telemetry",
+      "url": "https://github.com/openai/codex/issues/36313",
+      "author": "phyrexia (openai/codex issue, 2026-07-31; plan_type=pro, tier 5x/20x ambiguous)",
+      "rawObservations": {
+        "method": "sums per-session token_count deltas from ~/.codex rollout files and divides by the % traveled on the weekly meter — four windows observed across their ENTIRE 0→100% span (no extrapolation); token counter includes cached input",
+        "tokensToFillFullWeek_sameAccountSamePlan": [236664271653, 239521232281, 106815111514, 91165406177],
+        "secondLowerTierAccount": "5,799,558,969 tokens to fill one week (hit 100% within a single task)",
+        "windowAnomaly": "nine distinct weekly reset anchors in one week (rolling 'now+7d' anchor bug); windows opened after the cascade hold ~2.4x less",
+        "julyUsageLimitExceededCount": 387
+      },
+      "derivations": {
+        "vs_adopted_luna": "Pro window capacity 91–240B tokens/wk vs adopted chatgpt_pro_5x × luna 93.9亿/wk (→9.7–25x) or pro_20x 375.56亿/wk (→2.4–6.4x) — UPWARD tension, opposite direction to the log-study/qwinah low reads",
+        "mechanismReading": "raw-token capacity of a full week is far above token-derived adopted values — consistent with a cost/class-weighted meter where cache-read-heavy Codex workloads buy far more raw tokens per quota point",
+        "stabilityReading": "the SAME account+plan's full-window capacity moved 236B→91B within one week → the weekly % meter does not denote a fixed token pool"
+      },
+      "adoptionImpact": "Methodological: proves the weekly % bar is not a linear raw-token meter — capacity varies 2.4x by window cohort on identical plan. Token-linear ×5/×20 derivations are unreliable in BOTH directions; under a cost-weighted meter, cache-heavy Luna workloads plausibly yield larger raw-token pools than Plus-Luna×N derivations suggest",
+      "caveats": ["plan_type 'pro' does not distinguish 5x vs 20x", "token_count includes cache reads; mix unknown", "July windows predate the mid-August depletion cluster"],
+      "confidence": "medium-high (full-window telemetry, method stated, artifacts acknowledged by author)"
+    },
+    {
+      "id": "gh38728-worth-per-point",
+      "type": "github_issue_telemetry",
+      "url": "https://github.com/openai/codex/issues/38728",
+      "author": "Morrlis (openai/codex issue, 2026-08-15; ChatGPT Pro)",
+      "rawObservations": {
+        "method": "reconstructed from local Codex JSONL token_count events; API-equivalent priced at OpenAI standard list rates as comparison metric",
+        "apiWorthPerWeeklyPctPoint": {"normal": "$18.02–$22.55/pp", "anomalyInterval": "$8.11/pp (2.4x faster meter, 2026-08-14 08:12–17:08 UTC, then reverted)"},
+        "anomalyModelMix": "gpt-5.5 $120.14 / gpt-5.6-sol $32.16 / gpt-5.6-luna $34.23 of the $186.54 interval",
+        "unexplainedGap": "11–14 percentage points not explained by complete local token journals"
+      },
+      "derivations": {
+        "weeklyWorthPool": "$18–22.55/pp normal → full Pro week ≈ $1,800–2,255 API list-worth",
+        "vs_adopted_round14": "adopted note on chatgpt_pro_20x × gpt-6-astra already carries '周池≈$1200~1500 list-worth (Astra), 同池Sol $2200~2500' → this independent $1.8–2.3K/wk lands inside the same band → CORROBORATES worth口径",
+        "anomalyReading": "meter accounting accelerated ~2.4x mid-window then reverted, same bucket/reset/tier — server-side weighting is time-varying"
+      },
+      "adoptionImpact": "Corroborates the adopted Pro worth口径 (~$2K/wk band) from an independent telemetry source; simultaneously documents that the meter's $-per-point rate itself is unstable",
+      "confidence": "medium-high (bounded anomaly with adjacent-window controls, method documented)"
+    },
+    {
+      "id": "gh36144-luna-burn-rates",
+      "type": "github_issue_telemetry",
+      "url": "https://github.com/openai/codex/issues/36144",
+      "author": "tourvald + commenters (openai/codex issue, 2026-07-30)",
+      "rawObservations": {
+        "pro5x_luna_high": "~1 percentage point per Luna task; 64→59% in ~2h; 59→55% after 4–6 tasks; 55→53% after 2 tasks",
+        "pro5x_modelRelativeBurn": "aaron-manning: single Luna(high) agent >1%/hr; SAME usage on Sol(high) ≈ 6–8%/hr → Luna ~6–8x cheaper on meter per work-hour",
+        "plus20usd": "RGerculy: 64% of weekly usage consumed in one day on $20 plan (same workflow as before, sudden acceleration)"
+      },
+      "derivations": {
+        "relativeWeights": "Luna vs Sol ~1:6–8 on the meter per hour of similar work — real per-model weighting exists and roughly tracks price, but absolute pools stay unmeasured",
+        "vs_adopted_luna5x": "1pp/task with tasks ~30–60min → Luna-high full week ≈ 100+ task-hours on Pro 5x; cannot convert to tokens without the author's token logs"
+      },
+      "adoptionImpact": "Model-weight evidence: the meter discriminates models ~6-8x (Luna vs Sol), so single-mix % readings cannot be generalized; consistent with cost-weighted rather than token-weighted metering",
+      "confidence": "medium (panel % reads, no token pairing)"
+    },
+    {
+      "id": "gh38157-pro20x-provisioned-as-5x",
+      "type": "github_issue",
+      "url": "https://github.com/openai/codex/issues/38157",
+      "author": "Jonesau + AiurArtanis (openai/codex issue, 2026-08-12)",
+      "rawObservations": {
+        "claim": "Multiple separately-subscribed active Pro 20x accounts behave like Pro 5x capacity while API still reports plan_type:'pro'; change appeared simultaneously across affected accounts",
+        "companion": "AiurArtanis: 'a weekly allowance is being burned as if it were a 5-hour allowance'"
+      },
+      "derivations": {
+        "mechanism": "entitlement/provisioning class defect — nominal tier label does not guarantee delivered weekly capacity; candidate mechanism for why community ×20 measurements read low"
+      },
+      "adoptionImpact": "Supports flagging ×20-derived rows low: if a subset of 20x accounts is provisioned at ~5x, field measurements will cluster at 5x-scale capacity — matching (not refuting) the downward reads",
+      "caveats": ["reporter-corrected initial account mixup (prolite report)", "no token telemetry attached"],
+      "confidence": "medium (multi-account claim, qualitative)"
+    },
+    {
+      "id": "gh40045-pro20x-one-day-exhaustion",
+      "type": "github_issue",
+      "url": "https://github.com/openai/codex/issues/40045",
+      "author": "gaurence (openai/codex issue, 2026-08-22; Pro 20x)",
+      "rawObservations": {
+        "claim": "one day of long-horizon agentic Codex work can consume the entire Pro 20x weekly allowance; asks to separate entitlement change vs per-task regression vs system overhead (compaction, replay, retries, waits, orchestration)"
+      },
+      "adoptionImpact": "Qualitative corroboration of the effective-capacity gap on 20x; enumerates the non-token overhead categories that consume the same bucket",
+      "confidence": "low-medium (no telemetry attached; well-scoped mechanism question)"
+    },
+    {
+      "id": "gh41220-meta-tracker",
+      "type": "github_issue_meta",
+      "url": "https://github.com/openai/codex/issues/41220",
+      "author": "FromAriel (openai/codex issue, 2026-08-27)",
+      "rawObservations": {
+        "content": "meta-tracker indexing 15+ abnormal quota-depletion reports with evidence-strength annotations",
+        "strongestEntries": {
+          "gh37445": "controlled experiment: 103h47m with all clients closed = 0% drain; launching ChatGPT desktop triggered a fixed ~6% weekly deduction; quitting stopped it → background/passive consumption bills the same bucket",
+          "gh40067": "Plus weekly ~99%→0% within hours; local OAuth-agent logs ~9.39M gross input tokens while server Profile attributes 81.7M → server-side attribution ~8.7x client-visible tokens (ALREADY ARCHIVED upstream in chatgpt-quotas-round5-2026-09.json — dedupe)",
+          "gh38335": "Pro 20x: ~11pp weekly during one ~50-minute frontend task; ~2–3pp in just over a minute while external CLI did the work",
+          "gh28879": "GPT-5.5 plan: reported limit cost per token jumped ~10–20x between Jun 12 and Jun 18"
+        }
+      },
+      "adoptionImpact": "Establishes the anomaly is systematic (mid-August cluster), not anecdote; provides the client-vs-server token-attribution gap (~8.7x) that reconciles why metered weeks end far earlier than local token math predicts",
+      "confidence": "medium-high as an index; individual entries vary"
+    },
+    {
+      "id": "slobodianiuk-claude-meter-weights",
+      "type": "measured_meter_weights_article",
+      "url": "https://medium.com/@oleksandrslobodianiuk/i-measured-the-claude-max-meter-here-is-what-a-token-actually-weighs-d3385a226d7c",
+      "author": "Alex Slobodianiuk (Medium, ~2026-09-03; original Ukrainian version linked)",
+      "method": "controlled claude -p runs (bare sessions, no MCP/hooks/CLAUDE.md) reading api.anthropic.com/api/oauth/usage before/after; three run types each loading mostly one token class (39.4M cache-read run, 2.5M cache-write run, 205.8K output run); 31 days of own logs for mix",
+      "rawObservations": {
+        "meterWeightsPerMillionTokens_5hWindow": {"output": "60% (50–70 range)", "cacheWrite": "1.6% (1.1–2.2)", "input": "~1.3% (assumed, not measured)", "cacheRead": "0.07% (0.05–0.10)"},
+        "keyRatio": "output weighs ~857x a cache-read ON THE METER vs ~50x on the price list — meter is token-class weighted, not token-count",
+        "ownMix": "31 days: output 75.3% / cache-read 14.5% / cache-write 10.2% of meter; subagents = 56% of meter",
+        "temporalCaveat": "weekly limit was temporarily raised +50% during measurement until 2026-09-13 (Anthropic promo) — weekly reads in that window are inflated"
+      },
+      "derivations": {
+        "mechanismProof": "Anthropic's % meter is class-weighted: a cache-read-heavy week yields ~10x more raw tokens than an output-heavy week at identical % consumption",
+        "resolvesClaudeProSpread": "shownotover 115M=10% vs umairzia 270M=43% (98% cache-read) is NOT a contradiction once weighted — explains why our round1 'tension' on claude_pro is partly a units artifact",
+        "promoWarning": "weekly measurements taken on/before Sep 13 may reflect the +50% promo pool — date-stamp matters"
+      },
+      "adoptionImpact": "Methodological anchor for ALL Anthropic rows: 'monthly usable tokens' is workload-mix dependent by ~an order of magnitude; single-%-read raw-token derivations carry a hidden mix assumption. Also flags that mid-Sept Claude weekly reads may sit on a temporarily +50% pool",
+      "confidence": "high for the weight table (controlled single-class runs); input weight assumed by author"
+    },
+    {
+      "id": "reddit-grok-quota-threads",
+      "type": "reddit_threads",
+      "url": "https://reddit.sentinel-team.org/posts/1uwkm6y + /posts/1uv4iom + /posts/1uv390k (r/grok snapshots, ~2026-07-18)",
+      "rawObservations": {
+        "multiplierCorroboration": "littlejerry31: spent 100% of SuperGrok quota → appeared as 10% on Heavy → Heavy ≈ 10x SuperGrok ('1:1 per dollar'; voice-mode basis) — supports the derived ×10 panel-face scaling",
+        "multiplierDispute": "Skybreaker7: 'from other people testing Heavy is about 4X Super' — community split between ~4x and ~10x",
+        "silentDrain": "Humble_Ad8803 + thread: Heavy weekly drain felt ~10–20x worse mid-July 2026; users report silent meter changes, no changelog",
+        "mechanismContext": "xAI FAQ (via DataLLM Lab, 2026-07): weekly pool is compute-metered, shared across Chat/Imagine/Voice/Build/API; no numeric per-tier allowance published"
+      },
+      "derivations": {
+        "reconciliation": "If ×10 multiplier is right (per-dollar report) but the $30 base is high (two ~0.66–0.68x challengers), the triangulated alternative is: base ~83–85M/wk → Heavy ≈ 33–34亿/mo vs adopted 49.7亿 — the two independent low reads are mutually consistent under unchanged ×10 scaling",
+        "note": "shownotover $30 read 82.6M/wk and SPAC89 Heavy achieved 3.4B/30d÷10≈85M/wk land within ~3% of each other under this reading"
+      },
+      "adoptionImpact": "Supports keeping supergrok_plus/heavy at low while suggesting the fix is the BASE read, not the multiplier — maintainer adjudicates",
+      "caveats": ["voice-mode basis for the 10x report, not Grok Build", "July snapshots predate Sept panel reads", "sentinel-team.org is a Reddit snapshot mirror; live threads at reddit.com/r/grok"],
+      "confidence": "low-medium"
+    },
+    {
+      "id": "codexusage-dev-pro-limits",
+      "type": "third_party_quota_guide",
+      "url": "https://www.codexusage.dev/limits/pro",
+      "rawObservations": {
+        "official5hRanges": "OpenAI published 5h local-message estimates by tier: Luna Plus 250–2,000 / Pro5x 1,250–10,000 / Pro20x 5,000–40,000; Astra 5–45 / 25–225 / 100–900; Sol 10–100 / 50–500 / 200–2,000; Terra 25–200 / 125–1,000 / 500–4,000",
+        "keyStatement": "site quotes OpenAI table for the 5-HOUR window and notes 'weekly allowances are not published'"
+      },
+      "derivations": {
+        "interpretation": "the official 5x/20x multiplier is documented only for 5-hour message windows; the adopted ×20 WEEKLY token derivation extends that multiplier to a window OpenAI does not publish — exactly the unverified step our confidence flag marks"
+      },
+      "adoptionImpact": "Clarifies what the '20x' officially covers (5h windows) vs what is extrapolated (weekly pools) — supports flagging weekly ×20 derivations low",
+      "confidence": "medium (third-party reproducing official figures; verify against OpenAI pricing table before adopting)"
     }
   ],
   "summary": {
+    "mechanismFindings": [
+      "The weekly % meter is NOT a linear raw-token pool on either vendor: Anthropic meter weights output ~857× a cache-read (Slobodianiuk controlled runs); Codex full-window capacity moved 236B→91B tokens within one week on the same plan (gh36313) and meter $-per-point accelerated 2.4× mid-window then reverted (gh38728); server-side token attribution ran ~8.7× client-visible tokens in gh40067",
+      "Provisioning risk: multiple Pro 20x accounts report effective ~5x capacity while plan_type stays 'pro' (gh38157) — tier label ≠ delivered quota, so field reads of '20x' can legitimately cluster at 5x scale",
+      "Weekly quota instability is systematic, not anecdote: meta-tracker gh41220 indexes 15+ depletion reports incl. a closed-client control experiment (gh37445: 0% drain over 103h47m, ~6% fixed deduction on desktop launch = background consumption)"
+    ],
     "corroborations": [
       "claude_max_20x × opus-5.5: 81亿/wk vs adopted 75.4亿/wk (1.07×)",
       "claude_pro × opus-5.5: shownotover 11.5亿/wk vs PR #46 raw 11.34亿/wk (1.01× — near-exact; PR46 worth口径 sits lower)",
       "chatgpt_pro_20x × gpt-6-astra: log-study 8.8M/pt & Observatory 9.11M/pt vs adopted 9.53亿/wk (0.92–0.97×); qwinah chart worth figures echo adopted round14口径",
       "chatgpt_plus × gpt-6-sol: shownotover 3.22亿/wk vs adopted 2.62亿/wk (1.23×)",
       "chatgpt_pro_20x × gpt-5.6-sol: qwinah 12.32B/mo vs adopted 12.90B/mo (0.95×)",
-      "claude_max_20x × opus-5: qwinah 15.7B/mo vs adopted 15.7B/mo (1.00× exact)"
+      "claude_max_20x × opus-5: qwinah 15.7B/mo vs adopted 15.7B/mo (1.00× exact)",
+      "Pro weekly worth口径: gh38728 measured $18–22.55/pp → ~$1.8–2.3K/wk, inside adopted round14 $1200–2500 band",
+      "SuperGrok multiplier: Reddit 1:1-per-dollar report (Heavy ≈ 10× Super) corroborates the derived ×10 scaling — the dispute is the BASE read, not the multiplier"
     ],
     "tensions": [
-      "supergrok × grok-4.7 weekly pool: shownotover 82.6M/wk (0.66×) + SPAC89 Heavy achieved ~0.85B/wk (0.68× of derived) — TWO independent reads below adopted 124.33M/wk round2 measurement; cluster suggests round2 base may run high",
-      "chatgpt_pro_20x × gpt-5.6-luna: log-study 2.61B Luna-heavy saturated week → 26.1亿/wk = 0.07× of derived 375.56亿/wk (0.28× of the 5x derivation); qwinah chart 60.05B/mo = 0.40× — three independent reads all far below the ×20 derivation; strongest re-measurement candidate in this batch",
-      "claude_pro × opus-5.5: umairzia 6.3亿/wk raw vs PR#46's 11.3亿/wk raw + shownotover 11.5亿/wk — two sources near 11.3–11.5亿 vs one at 6.3亿",
+      "supergrok × grok-4.7 weekly pool: shownotover 82.6M/wk (0.66×) + SPAC89 Heavy achieved ~0.85B/wk (0.68× of derived) — TWO independent reads below adopted 124.33M/wk round2 measurement; under the corroborated ×10 scaling both triangulate to a base ~83–85M/wk",
+      "chatgpt_pro_20x × gpt-5.6-luna: DOWNWARD — log-study 2.61B Luna-heavy saturated week = 0.07× of derived 375.56亿/wk (0.28× of 5x); qwinah 60.05B/mo = 0.40×; gh38157/gh40045 report 20x accounts at ~5x effective capacity. UPWARD — gh36313 measured full-week capacity 91–240B tokens on plan_type=pro (2.4–6.4× the 20x derivation) under a cache-heavy mix. Both directions consistent with a class/cost-weighted meter rather than a fixed token pool — the derivation itself is the unreliable step",
+      "claude_pro × opus-5.5: umairzia 6.3亿/wk raw vs PR#46's 11.3亿/wk raw + shownotover 11.5亿/wk — largely RESOLVED as units artifact: umairzia's 270M was 98% cache-read which weighs ~1/857 of output on the meter (Slobodianiuk weights)",
       "chart Luna ~40亿 labeled weekly — probable units slip vs adopted monthly figure"
     ],
     "unusable": [
@@ -261,9 +421,9 @@
     ],
     "followupDataWanted": [
       "SuperGrok Heavy panel screenshot: weekly % paired with token count (the $250-face pool has never been independently measured)",
-      "Codex Pro 20x: a Luna-saturated week (0% left) with per-model token split, to test the ×20 Luna derivation — now the top-priority item given 3 independent low reads",
+      "Codex Pro 20x: a Luna-saturated week (0% left) with per-model token split AND the token-class breakdown (cache-read share) — raw tokens alone cannot test the derivation now that class-weighting is documented",
       "SuperGrok 4.7: a second round of Grok Build windows paired with weekly-% reads (round2's 124.33M/wk now has two ~0.66–0.68× challengers)",
-      "Claude Max 20x: /usage weekly % paired with ~/.claude token totals for a clean reset-anchored week",
+      "Claude Max 20x: /usage weekly % paired with ~/.claude token totals for a clean reset-anchored week — and note whether it falls inside Anthropic's temporary +50% weekly promo window (pre Sep-13 reads are inflated)",
       "Permalinks for the forwarded X posts and the 1%-study page (provenance convention)"
     ]
   }
