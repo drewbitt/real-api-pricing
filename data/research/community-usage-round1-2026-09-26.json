@@ -1,14 +1,14 @@
 {
   "collectedAt": "2026-09-26",
   "scope": "User-reported subscription usage measurements forwarded by @drewbitt (X posts / community reposts / a personal log study). Evidence-only round: raw observations, derivations, and cross-checks against adopted rows are recorded; NO adopted values are changed in this PR. Per project convention, conflicting sources are all recorded and the maintainer adjudicates.",
-  "method": "Each source's raw panel/tracker/log figures are kept as reported; implied pools are computed as reported_tokens / reported_quota_fraction; monthly = weekly × 4 (project standard). Dollar figures reported by trackers are list-price equivalents (worth口径) and are recorded as corroboration only, never converted to tokens.",
+  "method": "Each source's raw panel/tracker/log figures are kept as reported; implied pools are computed as reported_tokens / reported_quota_fraction; monthly = weekly × 4 (project standard). Dollar figures reported by trackers are list-price equivalents (worth口径) and are recorded as corroboration only, never converted to tokens. Screenshots are NOT committed (data/research is JSON-only); they are embedded in the PR body for review and the X permalinks are the provenance.",
   "sources": [
     {
       "id": "spac89-usage-tracker",
       "type": "x_post_plus_usage_tracker_screenshot",
       "url": "https://x.com/SPAC89 (post text forwarded; exact status permalink not captured)",
       "author": "@SPAC89 (Iam_)",
-      "screenshot": "data/research/community-spac89-usage-2026-09-26.png",
+      "screenshot": "embedded in PR body (source: X post by @SPAC89)",
       "rawObservations": {
         "grok_supergrok_heavy": {
           "planFeeUsd": 300,
@@ -69,7 +69,7 @@
       "type": "x_post_plus_panel_screenshot",
       "url": "https://x.com/umairzia700 (16h post; exact status permalink not captured)",
       "author": "@umairzia700 (Aimerscoding, verified)",
-      "screenshot": "data/research/community-umairzia-claude-pro-2026-09-26.png",
+      "screenshot": "embedded in PR body (source: X post by @umairzia700)",
       "rawObservations": {
         "plan": "Claude Pro $20/mo",
         "model": "Opus 5.5 (session 100% Opus; tweet says 'on MAX' effort)",
@@ -100,7 +100,7 @@
       "id": "community-20usd-chart",
       "type": "community_infographic_zh",
       "url": "none — image forwarded by @drewbitt",
-      "screenshot": "data/research/community-20usd-quota-chart-2026-09-25.png",
+      "screenshot": "embedded in PR body (community infographic, original source unknown)",
       "dated": "2026-09-25",
       "title": "同样 $20/月，额度差多少 — Claude Pro vs GPT Plus",
       "claims": {
