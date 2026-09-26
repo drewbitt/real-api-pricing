@@ -1,0 +1,179 @@
+{
+  "collectedAt": "2026-09-26",
+  "scope": "User-reported subscription usage measurements forwarded by @drewbitt (X posts / community reposts / a personal log study). Evidence-only round: raw observations, derivations, and cross-checks against adopted rows are recorded; NO adopted values are changed in this PR. Per project convention, conflicting sources are all recorded and the maintainer adjudicates.",
+  "method": "Each source's raw panel/tracker/log figures are kept as reported; implied pools are computed as reported_tokens / reported_quota_fraction; monthly = weekly × 4 (project standard). Dollar figures reported by trackers are list-price equivalents (worth口径) and are recorded as corroboration only, never converted to tokens.",
+  "sources": [
+    {
+      "id": "spac89-usage-tracker",
+      "type": "x_post_plus_usage_tracker_screenshot",
+      "url": "https://x.com/SPAC89 (post text forwarded; exact status permalink not captured)",
+      "author": "@SPAC89 (Iam_)",
+      "screenshot": "data/research/community-spac89-usage-2026-09-26.png",
+      "rawObservations": {
+        "grok_supergrok_heavy": {
+          "planFeeUsd": 300,
+          "weeklyLimit": "0% left — limit reached, resets in 9h10m",
+          "extraUsage": "Disabled",
+          "today": "No data",
+          "yesterday": "$2.30 worth / 2.8M tokens",
+          "last30Days": "$1.2K worth / 3.4B tokens",
+          "tweetText": "SuperGrok Heavy costs $300, and with Grok 4.7 you only get around 3.5B tokens in Grok Build"
+        },
+        "codex_pro_20x": {
+          "planFeeUsd": 200,
+          "weekly": "95% left, resets in 6d 2h (NOT saturated)",
+          "extraUsage": "$0.00 / 0 credits",
+          "today": "$11.29 / 423.3M tokens",
+          "yesterday": "$285.14 / 1.1B tokens",
+          "last30Days": "$16.8K worth / 18.8B tokens",
+          "tweetText": "the $200 Codex plan gets me close to 20B tokens a month roughly 20K worth of usage"
+        },
+        "claude_unspecified": {
+          "tweetText": "Claude gives you around 15K worth of usage",
+          "note": "No token count, plan tier, or window → unusable per conventions"
+        }
+      },
+      "derivations": {
+        "supergrok_heavy_grok47": {
+          "achievedMonthlyTokens": 3400000000,
+          "achievedWeeklyTokens": 850000000,
+          "adoptedMonthlyYi": 49.7,
+          "adoptedBasis": "derived, not independently measured: SuperGrok 4.7 measured weekly pool 124,330,387 × panel $250/$25 × 4w (supergrok-grok47-round2-2026-09-22.json)",
+          "impliedDerivedWeeklyTokens": 1243303870,
+          "ratioAchievedVsDerived": 0.68,
+          "readings": [
+            "If the weekly cap was hit every week (screenshot shows current week at 0% only), implied weekly pool ~850M < derived 1.24B → downward tension on the derived Heavy value",
+            "If only the current week saturated, 3.4B/30d is a lower bound of consumption, still consistent but weaker"
+          ]
+        },
+        "codex_pro_20x": {
+          "achievedMonthlyTokens": 18800000000,
+          "interpretation": "95% weekly left → consumption lower bound, not quota. Consistent with adopted chatgpt_pro_20x × gpt-5.6-luna 1502.22亿/月 headroom; does not constrain any adopted value",
+          "worthCheck": "$16.8K / 18.8B ≈ $0.89/MTok blended list-worth — plausible for a Luna-heavy mix"
+        }
+      },
+      "adoptionImpact": {
+        "supergrok_heavy × grok-4.7": "First independent real-usage data point for Heavy (adopted 49.7亿 is derived-only). Recorded as tension at ~0.68×; saturating-weeks ambiguity noted",
+        "chatgpt_pro_20x rows": "corroboration of headroom only (non-saturated)",
+        "claude rows": "unusable — no numbers"
+      },
+      "caveats": [
+        "n=1 anonymous X account; tracker app unidentified — its token semantics (cache inclusion) unknown",
+        "tracker 'worth' figures are its own list-price estimates",
+        "Grok weekly saturation confirmed only for the current week"
+      ],
+      "confidence": "low"
+    },
+    {
+      "id": "umairzia-claude-pro-opus55",
+      "type": "x_post_plus_panel_screenshot",
+      "url": "https://x.com/umairzia700 (16h post; exact status permalink not captured)",
+      "author": "@umairzia700 (Aimerscoding, verified)",
+      "screenshot": "data/research/community-umairzia-claude-pro-2026-09-26.png",
+      "rawObservations": {
+        "plan": "Claude Pro $20/mo",
+        "model": "Opus 5.5 (session 100% Opus; tweet says 'on MAX' effort)",
+        "durationHrs": "~40 nonstop (panel Active 11h51m, API 2h30m for this session)",
+        "sessionCostUsd": 106.26,
+        "sessionTokensApprox": 270000000,
+        "breakdown": {"input": "1.1k", "output": "5.4k", "cacheRead": "266.5M", "cacheWrite": "4.1M"},
+        "fiveHourLimit": "100% used, resets in 14 min",
+        "weeklyAllModels": "43% used (57% left), resets Sun 7:00 PM",
+        "cloudSessionCredits": "$100 of $100 left (exp Nov 5) — promotional credits, not plan quota"
+      },
+      "derivations": {
+        "impliedWeeklyPoolRawTokens": "270.6M ÷ 43% ≈ 629M/wk ≈ 25.2亿/月 raw",
+        "vsOpenPR46": "PR #46 pending raw direct measurement: 151.19M = 13.333% weekly → 11.34亿/wk ≈ 45.36亿/月 raw; adopted worth口径 28.99亿/月. This source implies ~0.55× of PR46's raw weekly — tension between two n=1 panel reads; worth口径 lands between them",
+        "worthCheck": "$106.26 session cost over ~40h; weekly share 43% → run-rate ≈ $247/wk list-worth (different accounting than PR46's segment-worth method)"
+      },
+      "adoptionImpact": {
+        "claude_pro × claude-opus-5.5": "Second independent panel sample for the row open PR #46 is rewriting (36.09亿 → 28.99亿 worth口径). Recorded as corroborating tension — do not re-decide in this PR"
+      },
+      "caveats": [
+        "n=1; 'Weekly · all models' meter could include non-Opus tokens (session was 100% Opus but earlier sessions unknown)",
+        "5h sub-cap at 100% may throttle weekly-pool reachability (window-limited pacing)",
+        "effort level (max) affects burn rate, not necessarily pool size"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "id": "community-20usd-chart",
+      "type": "community_infographic_zh",
+      "url": "none — image forwarded by @drewbitt",
+      "screenshot": "data/research/community-20usd-quota-chart-2026-09-25.png",
+      "dated": "2026-09-25",
+      "title": "同样 $20/月，额度差多少 — Claude Pro vs GPT Plus",
+      "claims": {
+        "fiveHourWindow": {"claude": "1.75亿", "gpt": "0.2亿", "ratio": "约9倍"},
+        "weeklyQuota": {"claude": "12–14亿", "gpt": "1.6–1.8亿", "ratio": "约7–8倍"},
+        "apiWorthEquivalent": {"claude": "约$350", "gpt": "约$130–170", "ratio": "约2倍多"},
+        "perModelWeeklyYi": {"luna": "约40亿", "opus55": "12–14亿", "terra": "约3.8亿", "sol": "1.6–1.8亿", "astra": "约0.85亿"},
+        "note": "Luna 是 Astra 的约47倍 on the same $20; both plans allow ~7–9 full windows/week (both exhaust in ~1.5–2 days of continuous heavy use)",
+        "modelBasis": "Claude side = Opus 5.5 (thinking high); GPT side = GPT-5.6 Sol (default tiers)",
+        "citedSources": "Claude: one LinuxDO user measurement (1.6亿 tokens for window 2%→92%). GPT: 3 LinuxDO users + 2 NerfTrack cases + GitHub issue cross-check; dollar口径 two sources agree"
+      },
+      "crossChecks": [
+        "Claude Pro weekly 12–14亿 vs PR #46 raw direct 11.34亿/wk → corroborates (range covers it)",
+        "GPT Plus Sol 1.6–1.8亿/wk vs adopted 1.54亿/wk (6.16亿/mo) → corroborates",
+        "Terra 3.8亿 vs adopted Plus Terra 2.98亿/wk (11.915亿/mo) → same magnitude",
+        "Astra 0.85亿 vs adopted Plus Astra 0.40亿/wk (1.59亿/mo) → 2× gap, minor tension",
+        "Luna ~40亿 labeled 周额度 is 2× adopted Plus Luna weekly (18.8亿 = 75.11亿/mo) — suspiciously equal to PR #45's GPT-6 Luna MONTHLY 40.80亿; likely a units slip or different-model mixup"
+      ],
+      "adoptionImpact": "Tertiary composite — archive as community corroboration only. Its cited primaries (LinuxDO threads, NerfTrack cases, GitHub issue) would be the adoptable evidence if fetched directly",
+      "caveats": ["composite infographic; windows/units may be mixed; 'not a same-workload comparison' per its own footnote"],
+      "confidence": "low"
+    },
+    {
+      "id": "claude-codex-1pct-log-study",
+      "type": "personal_log_study_forwarded_text",
+      "url": "unknown — full text forwarded by @drewbitt; source page permalink requested",
+      "window": "2026-09-09 → 2026-09-25 (Claude leg: 2026-09-24 17:15 reset → 09-25 19:00 PT, 0%→83%)",
+      "method": "Claude: every message in ~/.claude/projects/**/*.jsonl deduplicated by message+request ID, Claude models only (Fable excluded — separate limit), 0%/83% read from /usage page. Codex: every token_count event in ~/.codex/sessions + Agent Farm Codex logs grouped by weekly reset; used_percent per turn. 27,031 Claude requests in window",
+      "rawObservations": {
+        "claude_max_opus55": {"limitUsedPts": 83, "totalTokens": 6710000000, "breakdown": {"output": "10.81M", "cacheWrites": "101.5M", "cacheReads": "6.60B", "freshInput": "0.06M"}, "perPt": "81M total / 130K output", "fullWeekExtrapolated": "8.1B tokens / 13M output"},
+        "codex_astra_only": {"windowDays": "Sep 9–12", "mix": "91% Astra", "limitUsedPts": 38, "totalTokens": 333000000, "perPt": "8.8M", "fullWeekExtrapolated": "0.9B"},
+        "codex_luna_astra": {"windowDays": "Sep 13–16", "mix": "46% Luna / 40% Astra / 15% Sol", "limitUsedPts": 99, "totalTokens": 944000000, "perPt": "9.5M", "fullWeekExtrapolated": "0.95B"},
+        "codex_luna_heavy": {"windowDays": "Sep 18–21", "mix": "73% Luna / 17% Astra / 7% Terra", "limitUsedPts": 100, "durationDays": 3.3, "totalTokens": 2610000000, "perPt": "26M", "fullWeekActual": "2.61B (100% burned)"},
+        "claudeVsCodexPerPt": {"totalTokens": "9.2× vs Astra-only, 8.5× vs mixed, 3.1× vs Luna-heavy", "outputTokens": "5×, 3.9×, 1.5×"}
+      },
+      "derivations": {
+        "claude_max20x_opus55": "81亿/wk vs adopted claude_max_20x × claude-opus-5.5 = 301.7亿/mo → 75.4亿/wk → 1.07× STRONG CORROBORATION of a previously derived-only value (5h-pool extrapolation from MiaAI tweet)",
+        "codex_pro20x_astra": "8.8亿/wk (8.8M/pt) vs adopted 38.12亿/mo → 9.53亿/wk → 0.92× corroboration of the 8-source weighted value; also vs Codex Quota Observatory 9.11M/pt → 0.97×",
+        "codex_pro20x_luna": "26亿/wk Luna-heavy vs adopted chatgpt_pro_20x × gpt-5.6-luna = 1502.22亿/mo → 375.56亿/wk derived ×20 → 0.28× TENSION on a derived-only value; caveat: 73% Luna mix, possible second account"
+      },
+      "adoptionImpact": {
+        "claude_max_20x × claude-opus-5.5": "corroborates adopted 301.7亿 derivation",
+        "chatgpt_pro_20x × gpt-6-astra": "corroborates adopted 38.12亿 weighted value",
+        "chatgpt_pro_20x × gpt-5.6-luna": "downward tension on ×20 derivation — candidate for re-measurement, not adopted here"
+      },
+      "caveats": [
+        "Codex plan tier not stated (Pro 20x assumed from scale; 'overlapping reset times suggest more than one Codex account' — author's own caveat)",
+        "Claude Max tier unstated (5x vs 20x)",
+        "Astra column projects a full week from only 38 points",
+        "No source URL captured yet — provenance incomplete until permalink supplied"
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "summary": {
+    "corroborations": [
+      "claude_max_20x × opus-5.5: 81亿/wk vs adopted 75.4亿/wk (1.07×)",
+      "chatgpt_pro_20x × gpt-6-astra: 8.8–9.1M/pt vs adopted 9.53亿/wk (0.92–0.97×, two independent sources incl. Codex Quota Observatory)",
+      "claude_pro × opus-5.5 weekly ~12–14亿 chart range covers PR #46 raw figure",
+      "chatgpt_plus × gpt-5.6-sol: chart 1.6–1.8亿/wk vs adopted 1.54亿/wk"
+    ],
+    "tensions": [
+      "supergrok_heavy × grok-4.7: 3.4B/30d achieved under weekly saturation vs derived 4.97B/mo (0.68×) — first independent Heavy datapoint",
+      "chatgpt_pro_20x × gpt-5.6-luna: 26亿/wk Luna-heavy measured vs 375.56亿/wk derived (0.28×) — needs a clean Luna-only saturated week",
+      "claude_pro × opus-5.5: umairzia 6.3亿/wk raw vs PR#46's 11.3亿/wk raw (0.55×) — PR#46 worth口径 sits between",
+      "chart Luna ~40亿 labeled weekly — probable units slip vs adopted monthly figure"
+    ],
+    "unusable": ["SPAC89 Claude '~$15K worth' claim — no token count, plan, or window"],
+    "followupDataWanted": [
+      "SuperGrok Heavy panel screenshot: weekly % paired with token count (the $250-face pool has never been independently measured)",
+      "Codex Pro 20x: a Luna-saturated week (0% left) with per-model token split, to test the ×20 Luna derivation",
+      "Claude Max 20x: /usage weekly % paired with ~/.claude token totals for a clean reset-anchored week",
+      "Permalinks for the forwarded X posts and the 1%-study page (provenance convention)"
+    ]
+  }
+}
