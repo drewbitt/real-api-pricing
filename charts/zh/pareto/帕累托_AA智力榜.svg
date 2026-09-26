@@ -68,10 +68,10 @@
 <g class="point" data-billing="subscription" data-frontier="false" data-price="0.0026627613" data-score="37.3244" data-x="1073.891" data-y="475.643" transform="translate(1073.891 475.643)"><title>GPT 5.6 Luna · Plus · $0.00266/MTok · 37.3244 · highGPT-5.6 Luna (max) · Exact served-model reference; quota-measurement effort is unverified.</title>
 <rect x="-3.5" y="-3.5" width="7" height="7" rx="1.8" fill="#16A34A" opacity=".68"/>
 </g>
-<g class="point" data-billing="subscription" data-frontier="false" data-price="0.0026626904" data-score="37.3244" data-x="1073.895" data-y="475.643" transform="translate(1073.895 475.643)"><title>GPT 5.6 Luna · Pro 5x · $0.00266/MTok · 37.3244 · mediumGPT-5.6 Luna (max) · Exact served-model reference; quota-measurement effort is unverified.</title>
+<g class="point" data-billing="subscription" data-frontier="false" data-price="0.0026626904" data-score="37.3244" data-x="1073.895" data-y="475.643" transform="translate(1073.895 475.643)"><title>GPT 5.6 Luna · Pro 5x · $0.00266/MTok · 37.3244 · lowGPT-5.6 Luna (max) · Exact served-model reference; quota-measurement effort is unverified.</title>
 <rect x="-3.5" y="-3.5" width="7" height="7" rx="1.8" fill="#16A34A" opacity=".68"/>
 </g>
-<g class="point" data-billing="subscription" data-frontier="true" data-price="0.0013313629" data-score="37.3244" data-x="1170.766" data-y="475.643" transform="translate(1170.766 475.643)"><title>GPT 5.6 Luna · Pro 20x · $0.00133/MTok · 37.3244 · mediumGPT-5.6 Luna (max) · Exact served-model reference; quota-measurement effort is unverified.</title>
+<g class="point" data-billing="subscription" data-frontier="true" data-price="0.0013313629" data-score="37.3244" data-x="1170.766" data-y="475.643" transform="translate(1170.766 475.643)"><title>GPT 5.6 Luna · Pro 20x · $0.00133/MTok · 37.3244 · lowGPT-5.6 Luna (max) · Exact served-model reference; quota-measurement effort is unverified.</title>
 <rect x="-11" y="-11" width="22" height="22" rx="6" fill="#FFF" stroke="#16A34A" stroke-width="1.35"/>
 <circle r="4" fill="#16A34A"/>
 </g>
@@ -123,7 +123,7 @@
 <g class="point" data-billing="subscription" data-frontier="false" data-price="0.060362173" data-score="46.4465506302286" data-x="637.706" data-y="385.942" transform="translate(637.706 385.942)"><title>Grok 4.7 · SuperGrok / Grok 4.7 · SuperGrok Heavy · $0.06036/MTok · 46.4465506302286 · mediumGrok 4.7 (xhigh) · Exact served-model reference; quota-measurement effort is unverified. / Grok 4.7 (xhigh) · Exact served-model reference; quota-measurement effort is unverified.</title>
 <rect x="-3.5" y="-3.5" width="7" height="7" rx="1.8" fill="#9333EA" opacity=".68"/>
 </g>
-<g class="point" data-billing="subscription" data-frontier="false" data-price="0.050251256" data-score="46.4465506302286" data-x="663.327" data-y="385.942" transform="translate(663.327 385.942)"><title>Grok 4.7 · SuperGrok Plus · $0.05025/MTok · 46.4465506302286 · mediumGrok 4.7 (xhigh) · Exact served-model reference; quota-measurement effort is unverified.</title>
+<g class="point" data-billing="subscription" data-frontier="false" data-price="0.050251256" data-score="46.4465506302286" data-x="663.327" data-y="385.942" transform="translate(663.327 385.942)"><title>Grok 4.7 · SuperGrok Plus · $0.05025/MTok · 46.4465506302286 · lowGrok 4.7 (xhigh) · Exact served-model reference; quota-measurement effort is unverified.</title>
 <rect x="-3.5" y="-3.5" width="7" height="7" rx="1.8" fill="#9333EA" opacity=".68"/>
 </g>
 <g class="point" data-billing="subscription" data-frontier="false" data-price="0.025849813" data-score="44.3113" data-x="756.229" data-y="406.939" transform="translate(756.229 406.939)"><title>Grok 4.6 · Cursor Ultra · $0.02585/MTok · 44.3113 · mediumGrok 4.6 (high) · Exact served-model reference; quota-measurement effort is unverified.</title>

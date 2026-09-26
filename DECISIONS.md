@@ -3,6 +3,10 @@
 `AGENTS.md` 只放 Agent 工作流程；口径与规则见 [`CONVENTIONS.md`](CONVENTIONS.md)；本文件记录每条采用值的取舍（旧值 → 新值 → 依据 → 未采来源）。
 最权威的表述仍在 `scripts/build_adopted.py` 的 `decision_note` 和 `data/research/` 证据文件里；本文件是按时间的索引摘要。改数只能改 `build_adopted.py`，改完在这里同步记一笔。
 
+## 2026-09-26
+
+- **社区用量报告 round1（8 源归档 + 置信度调整）**：社区用户报告批量入档 `data/research/community-usage-round1-2026-09-26.json`（X/面板/日志/图表混合，n=1 级为主）。**置信度调整（非数值变更）**：`chatgpt_pro_20x × gpt-5.6-luna` 1502.22亿 medium→low——该值为 Plus 面板基准×官方20x 纯派生，现三条独立社区来源远低于此（本机日志研究 Luna-heavy 饱和周 26.1亿/周=0.07×、第三方配额图 60.05B/月=0.40×、多账号自述各~2B/周）——或周池按 Luna 隐含计权而非线性 20x，降 low 待饱和周复核；`chatgpt_pro_5x × gpt-5.6-luna` 375.56亿 medium→low（同倍率派生同张力）；`supergrok_plus × grok-4.7` 19.9亿、`supergrok_heavy × grok-4.7` 49.7亿 medium→low——$30 基池 round2 单窗读数 124.33M/周 受两条独立读数张力（shownotover 19M=23%→82.6M/周=0.66×；SPAC89 Heavy 30天实得~3.4B 隐含~85M/周=0.68×），两派生行随基池降 low，基池行维持 medium 并在注中记张力待复核。**互证不升档**：`claude_max_20x × opus-5.5` 301.7亿 获独立日志研究满周~8.1B（81亿/周）互证 1.07×（维持 medium——重置锚定满周面板复核可升 high）；`chatgpt_pro_20x × gpt-6-astra` 38.12亿 第九源 8.8M/pt（0.92×）互证不入权；`chatgpt_plus × gpt-6-sol` 10.48亿 获 shownotover 3.22亿/周（1.23×）同量级互证。`claude_pro × opus-5.5` 相关读数（shownotover 11.5亿/周 ≈ PR#46 raw 1.01×）仅归档不改动——该行为开放 PR 争议区。
+
 ## 2026-09-24
 
 - **ChatGPT Plus × GPT-6 Sol 本机实测（新增模型点）**：10.48 亿/月 high（workload=measured）。用户本机 Codex 当日增量全为 gpt-6-sol：input 693,878 / output 46,713（含 reasoning 14,925）/ cache_read 14,976,384 = total 15,716,975（hit 95.57%）= 周额度约 6% → 15,716,975÷6%×4 周；直接用 total 不套负载（沿 Luna round6 先例）；6% 为口述取整，5.5~6.5% 对应 9.67~11.43 亿。工具估价 $4.85 = in $2 / cached $0.2 / out $10（$2/$10 与 AA 页一致，cached 0.1× 未见官方页，未建按量 API 行）。昨日 77.8M 无周% 检查点不参与。只挂 Plus，Pro 5x/20x 不派生（用户裁定）。榜分：`scores-new-models-round1` 中 gpt-6-sol 的 11 条 unmappedOfficialRows 原样移入新 supplement `scores-gpt6sol-round1-2026-09-24.json`（AA int max 47.5276、AA Coding Codex 56.6626、AA TB4 max 43.94）。证据：`chatgpt-gpt6sol-plus-round1-2026-09-24.json`。

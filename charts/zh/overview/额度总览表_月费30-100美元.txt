@@ -8,7 +8,7 @@
 汇率来源：https://www.xinhuanet.com/20260904/4c1ce1cbf39d416997cb9c237d6f5024/c.html
 序号  套餐                             价格/月            服务模型             月额度(亿)  $/MTok   置信度
 ----  -------------------------------  -----------------  -------------------  ----------  -------  ------
-1     ChatGPT Pro 5x                   USD 100            GPT 5.6 Luna         375.56      0.00266  medium
+1     ChatGPT Pro 5x                   USD 100            GPT 5.6 Luna         375.56      0.00266  low
 2     Ollama Max                       USD 100            DeepSeek V4.1 Flash  310.559     0.00322  medium
 3     Claude Max 5x (9/14+)            USD 100            Claude Sonnet 5      196.25      0.0051   low
 4     Ollama Max                       USD 100            DeepSeek V4 Flash    192.431     0.0052   medium
@@ -55,7 +55,7 @@
 45    Ollama Max                       USD 100            MiniMax M3           20.921      0.0478   medium
 46    Cursor Pro+                      USD 60             Grok 4.6             20.632      0.02908  medium
 47    SuperGrok Plus                   USD 100            Grok 4.6             20.4        0.04902  medium
-48    SuperGrok Plus                   USD 100            Grok 4.7             19.9        0.05025  medium
+48    SuperGrok Plus                   USD 100            Grok 4.7             19.9        0.05025  low
 49    GLM Coding Pro (v3 ¥538) 中间值  CNY 538            GLM 5.3              18.54       0.04281  high
 50    Cursor Pro+ (Composer Fast)      USD 60             Composer 2.5         18.358      0.03268  low
 51    Kimi 会员 199 (v1) †             ¥199（国际 $39）   Kimi K2.7 Code       15.68       0.02487  medium

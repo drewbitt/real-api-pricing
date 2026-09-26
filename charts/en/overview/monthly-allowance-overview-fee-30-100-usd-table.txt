@@ -8,7 +8,7 @@ FX: 1 USD = 6.7787 CNY (2026-09-04, CFETS central parity, via Xinhua); CNY month
 FX source: https://www.xinhuanet.com/20260904/4c1ce1cbf39d416997cb9c237d6f5024/c.html
 No.  Plan                               Monthly fee     Served model         Monthly tokens (B)  USD/MTok  Confidence
 ---  ---------------------------------  --------------  -------------------  ------------------  --------  ----------
-1    ChatGPT Pro 5x                     USD 100         GPT 5.6 Luna         37.556              0.00266   medium
+1    ChatGPT Pro 5x                     USD 100         GPT 5.6 Luna         37.556              0.00266   low
 2    Ollama Max                         USD 100         DeepSeek V4.1 Flash  31.0559             0.00322   medium
 3    Claude Max 5x (9/14+)              USD 100         Claude Sonnet 5      19.625              0.0051    low
 4    Ollama Max                         USD 100         DeepSeek V4 Flash    19.2431             0.0052    medium
@@ -55,7 +55,7 @@ No.  Plan                               Monthly fee     Served model         Mon
 45   Ollama Max                         USD 100         MiniMax M3           2.0921              0.0478    medium
 46   Cursor Pro+                        USD 60          Grok 4.6             2.0632              0.02908   medium
 47   SuperGrok Plus                     USD 100         Grok 4.6             2.04                0.04902   medium
-48   SuperGrok Plus                     USD 100         Grok 4.7             1.99                0.05025   medium
+48   SuperGrok Plus                     USD 100         Grok 4.7             1.99                0.05025   low
 49   GLM Coding Pro (v3 ¥538) Midpoint  CNY 538         GLM 5.3              1.854               0.04281   high
 50   Cursor Pro+ (Composer Fast)        USD 60          Composer 2.5         1.8358              0.03268   low
 51   Kimi Allegretto †                  $39 · CN ¥199   Kimi K2.7 Code       1.568               0.02487   medium

@@ -62,10 +62,10 @@
 <g class="point" data-billing="subscription" data-frontier="false" data-price="0.0026627613" data-score="2.15" data-x="1170.909" data-y="445.400" transform="translate(1170.909 445.400)"><title>GPT 5.6 Luna · Plus · $0.00266/MTok · 2.15 · highGPT 5.6 Luna (xHigh) · Exact served-model reference only; product harness and quota-measurement effort are unverified. Not a benchmark measurement of this subscription or API channel.</title>
 <rect x="-3.5" y="-3.5" width="7" height="7" rx="1.8" fill="#16A34A" opacity=".68"/>
 </g>
-<g class="point" data-billing="subscription" data-frontier="false" data-price="0.0026626904" data-score="2.15" data-x="1170.913" data-y="445.400" transform="translate(1170.913 445.400)"><title>GPT 5.6 Luna · Pro 5x · $0.00266/MTok · 2.15 · mediumGPT 5.6 Luna (xHigh) · Exact served-model reference only; product harness and quota-measurement effort are unverified. Not a benchmark measurement of this subscription or API channel.</title>
+<g class="point" data-billing="subscription" data-frontier="false" data-price="0.0026626904" data-score="2.15" data-x="1170.913" data-y="445.400" transform="translate(1170.913 445.400)"><title>GPT 5.6 Luna · Pro 5x · $0.00266/MTok · 2.15 · lowGPT 5.6 Luna (xHigh) · Exact served-model reference only; product harness and quota-measurement effort are unverified. Not a benchmark measurement of this subscription or API channel.</title>
 <rect x="-3.5" y="-3.5" width="7" height="7" rx="1.8" fill="#16A34A" opacity=".68"/>
 </g>
-<g class="point" data-billing="subscription" data-frontier="true" data-price="0.0013313629" data-score="2.15" data-x="1277.636" data-y="445.400" transform="translate(1277.636 445.400)"><title>GPT 5.6 Luna · Pro 20x · $0.00133/MTok · 2.15 · mediumGPT 5.6 Luna (xHigh) · Exact served-model reference only; product harness and quota-measurement effort are unverified. Not a benchmark measurement of this subscription or API channel.</title>
+<g class="point" data-billing="subscription" data-frontier="true" data-price="0.0013313629" data-score="2.15" data-x="1277.636" data-y="445.400" transform="translate(1277.636 445.400)"><title>GPT 5.6 Luna · Pro 20x · $0.00133/MTok · 2.15 · lowGPT 5.6 Luna (xHigh) · Exact served-model reference only; product harness and quota-measurement effort are unverified. Not a benchmark measurement of this subscription or API channel.</title>
 <rect x="-11" y="-11" width="22" height="22" rx="6" fill="#FFF" stroke="#16A34A" stroke-width="1.35"/>
 <circle r="4" fill="#16A34A"/>
 </g>

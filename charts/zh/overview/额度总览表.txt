@@ -8,11 +8,11 @@
 序号  套餐                               价格/月            服务模型                    月额度(亿)  $/MTok   置信度
 ----  ---------------------------------  -----------------  --------------------------  ----------  -------  ------
 1     Step Plan Max (¥699)               CNY 699            Step 3.5 Flash              1731.6      0.0006   medium
-2     ChatGPT Pro 20x                    USD 200            GPT 5.6 Luna                1502.22     0.00133  medium
+2     ChatGPT Pro 20x                    USD 200            GPT 5.6 Luna                1502.22     0.00133  low
 3     Step Plan Max (¥699)               CNY 699            Step 3.7 Flash              858.83      0.0012   medium
 4     Google AI Ultra 20x                USD 199.99         Gemini 3.8 Flash            448.2       0.00446  low
 5     Claude Max 20x (9/14+)             USD 200            Claude Sonnet 5             392.5       0.0051   medium
-6     ChatGPT Pro 5x                     USD 100            GPT 5.6 Luna                375.56      0.00266  medium
+6     ChatGPT Pro 5x                     USD 100            GPT 5.6 Luna                375.56      0.00266  low
 7     Step Plan Pro (¥199)               CNY 199            Step 3.5 Flash              346.32      0.00085  medium
 8     Ollama Max                         USD 100            DeepSeek V4.1 Flash         310.559     0.00322  medium
 9     Claude Max 20x (9/14+)             USD 200            Claude Opus 5.5             301.7       0.00663  medium
@@ -74,7 +74,7 @@
 65    MiniMax Token Plan Max (Global)    USD 55             MiniMax M3                  51          0.01078  high
 66    SuperGrok Heavy                    USD 300            Grok 4.6                    50.9        0.05894  medium
 67    SuperGrok Heavy                    USD 300            Grok 4.5                    50.9        0.05894  medium
-68    SuperGrok Heavy                    USD 300            Grok 4.7                    49.7        0.06036  medium
+68    SuperGrok Heavy                    USD 300            Grok 4.7                    49.7        0.06036  low
 69    Kimi 会员 699 (v1) †               ¥699（国际 $99）   Kimi K2.7 Code              47.04       0.02105  medium
 70    Claude Pro                         USD 20             Claude Sonnet 5             46.95       0.00426  medium
 71    Kimi 会员 699 (v1) †               ¥699（国际 $99）   Kimi K3                     43.53       0.02274  medium
@@ -112,7 +112,7 @@
 103   SuperGrok Plus                     USD 100            Grok 4.6                    20.4        0.04902  medium
 104   MiMo Token Plan Standard 日间      ¥99（国际 $16）    MiMo V2.6 Flash             20.22       0.00791  medium
 105   MiMo Token Plan Standard 日间      ¥99（国际 $16）    MiMo V2.5                   20.22       0.00791  medium
-106   SuperGrok Plus                     USD 100            Grok 4.7                    19.9        0.05025  medium
+106   SuperGrok Plus                     USD 100            Grok 4.7                    19.9        0.05025  low
 107   Claude Pro                         USD 20             Claude Opus 5               18.78       0.01065  high
 108   Claude Pro                         USD 20             Claude Opus 4.8             18.78       0.01065  low
 109   GLM Coding Pro (v3 ¥538) 中间值    CNY 538            GLM 5.3                     18.54       0.04281  high
