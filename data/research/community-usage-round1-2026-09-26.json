@@ -139,7 +139,7 @@
       "derivations": {
         "claude_max20x_opus55": "81亿/wk vs adopted claude_max_20x × claude-opus-5.5 = 301.7亿/mo → 75.4亿/wk → 1.07× STRONG CORROBORATION of a previously derived-only value (5h-pool extrapolation from MiaAI tweet)",
         "codex_pro20x_astra": "8.8亿/wk (8.8M/pt) vs adopted 38.12亿/mo → 9.53亿/wk → 0.92× corroboration of the 8-source weighted value; also vs Codex Quota Observatory 9.11M/pt → 0.97×",
-        "codex_pro20x_luna": "26亿/wk Luna-heavy vs adopted chatgpt_pro_20x × gpt-5.6-luna = 1502.22亿/mo → 375.56亿/wk derived ×20 → 0.28× TENSION on a derived-only value; caveat: 73% Luna mix, possible second account"
+        "codex_pro20x_luna": "26亿/wk Luna-heavy vs adopted chatgpt_pro_20x × gpt-5.6-luna = 1502.22亿/mo → 375.56亿/wk derived ×20 → 0.07× TENSION; if the account were Pro 5x instead (adopted 375.56亿/mo → 93.9亿/wk), ratio is 0.28× — either way far below the ×20 derivation; caveat: 73% Luna mix, possible second account"
       },
       "adoptionImpact": {
         "claude_max_20x × claude-opus-5.5": "corroborates adopted 301.7亿 derivation",
@@ -153,25 +153,116 @@
         "No source URL captured yet — provenance incomplete until permalink supplied"
       ],
       "confidence": "medium"
+    },
+    {
+      "id": "shownotover-20usd-test",
+      "type": "x_post_video_test",
+      "url": "https://x.com/shownotover (video post; exact status permalink not captured)",
+      "author": "@shownotover — NOTE: already an adopted upstream source (his Pro /usage read is the claude_pro × opus-5 high 18.78亿 row, claude-adoption-round8/round9)",
+      "rawObservations": {
+        "claude_pro_opus55_max": {"limitUsedPct": 10, "tokens": 115000000, "workHrs": 2},
+        "codex_plus_gpt6sol_max": {"limitUsedPct": 9, "tokens": 29000000, "workMin": 69},
+        "supergrok_grok47_xhigh": {"limitUsedPct": 23, "tokens": 19000000, "workMin": 36},
+        "hisWorthClaims": "Claude Pro ~$4,000/mo API-equivalent; Codex ~$330/mo — his own estimates, recorded not adopted"
+      },
+      "derivations": {
+        "claude_pro_opus55": "115M ÷ 10% → 1.15B/wk = 11.5亿/wk → ~46亿/mo raw — vs open PR #46 raw direct 11.34亿/wk (151.19M=13.333%): 1.01× — near-exact corroboration of PR46's raw口径 (its worth口径 28.99亿 sits lower)",
+        "codex_plus_gpt6sol": "29M ÷ 9% → 322M/wk = 3.22亿/wk → ~12.9亿/mo vs adopted chatgpt_plus × gpt-6-sol 10.48亿/mo (2.62亿/wk): 1.23× — same-magnitude corroboration",
+        "supergrok_grok47": "19M ÷ 23% → 82.6M/wk → 3.30亿/mo vs adopted supergrok × grok-4.7 4.97亿/mo (124.33M/wk round2 measured): 0.66× — SECOND independent read below adopted (SPAC89 batch was 0.68× on Heavy). Downward tension cluster forming on the grok-4.7 weekly pool"
+      },
+      "adoptionImpact": {
+        "claude_pro × claude-opus-5.5": "corroborates open PR #46 raw read (1.01×)",
+        "chatgpt_plus × gpt-6-sol": "corroborates adopted value (1.23×)",
+        "supergrok × grok-4.7 / supergrok_heavy × grok-4.7": "0.66× tension — second source below adopted"
+      },
+      "caveats": [
+        "single video test, work-type mix unknown; %-per-token at max/xhigh effort may not equal raw-token pool if quota is cost-weighted",
+        "short windows (36min–2hr), rounding on integer % reads gives wide pool ranges"
+      ],
+      "confidence": "medium (author already an adopted source upstream)"
+    },
+    {
+      "id": "thsottiaux-rcodex-audit",
+      "type": "x_post_rcodex_audit_summary",
+      "url": "https://x.com/thsottiaux",
+      "author": "@thsottiaux",
+      "screenshot": "embedded in PR body (allowance table image)",
+      "rawObservations": {
+        "pro20x_weekly_worth": {"gpt56_sol": "$25+/1% → $2,500+/wk, ~54,000 credits (~$2,160)", "gpt6_astra_only": "~$12/1% → ~$1,200/wk, ~28,500 credits (~$1,140)"},
+        "cacheLifetime": "~24h on Sol vs ~30min on Astra in Codex",
+        "basis": "r/codex audit, two Pro 20x accounts"
+      },
+      "derivations": {
+        "dedupeCheck": "Adopted chatgpt_pro_20x × gpt-6-astra note already carries 'round14新口径：周池≈$1200~1500 list-worth（Astra），同池Sol $2200~2500' — this post's numbers match almost verbatim → likely the SAME underlying audit already adopted (round14), not an independent source"
+      },
+      "adoptionImpact": "dedupe/corroboration of existing adopted round14 worth口径 — no new row impact",
+      "confidence": "medium (probably already-counted source)"
+    },
+    {
+      "id": "qwinah-quota-chart",
+      "type": "x_post_chart_repost",
+      "url": "https://x.com/MaaSonder (Sep 15 post)",
+      "author": "@MaaSonder (qwinah) — flag: contributor suspects this one is unreliable",
+      "screenshot": "embedded in PR body (top-12 monthly quota chart)",
+      "rawObservations": {
+        "selectedMonthlyReadings": {"chatgpt_pro_20x_luna56": "60.05B tok ~$42k", "claude_max_20x_sonnet5": "25.25B ~$152k", "chatgpt_pro_20x_terra56": "24.02B ~$168k", "claude_max_5x_sonnet5": "19.62B ~$118k", "cursor_ultra_composer25": "16.51B", "claude_max_20x_opus5": "15.7B ~$236k", "chatgpt_pro_20x_sol56": "12.32B ~$148k", "glm_coding_max_flash53": "12.28B ~$4.0k", "chatgpt_plus_luna56": "12.01B ~$8.4k"},
+        "statedConvention": "USD = list API price at 50/50 input/output, no cache — differs from project standardTokenMix 97/2.5/0.5"
+      },
+      "derivations": {
+        "vs_adopted": {
+          "chatgpt_pro_20x × gpt-5.6-luna": "60.05B vs adopted 150.22B → 0.40× — THIRD independent Luna-20x read far below the ×20 derivation (direction agrees with log-study 0.07×)",
+          "claude_max_20x × sonnet-5": "25.25B vs adopted 39.25B → 0.64×",
+          "claude_max_20x × opus-5": "15.7B vs adopted 15.7B → 1.00× exact",
+          "chatgpt_pro_20x × gpt-5.6-sol": "12.32B vs adopted 12.90B → 0.95×",
+          "chatgpt_plus × gpt-5.6-luna": "12.01B vs adopted 7.51B → 1.60×"
+        }
+      },
+      "adoptionImpact": "Suspect composite (per contributor flag + unknown provenance of its numbers); recorded because several rows land close to adopted (opus-5 exact, sol 0.95×) while Luna 20x joins the downward-tension cluster",
+      "caveats": ["provenance/methodology unknown", "different USD口径 (50/50 no cache)", "contributor flagged as possibly unreliable"],
+      "confidence": "low"
+    },
+    {
+      "id": "stephen4171127-multi-account-astra",
+      "type": "x_post_screenshot",
+      "url": "https://x.com/Stephen4171127 (Sep 20 post)",
+      "author": "@Stephen4171127 (熊布朗, verified)",
+      "screenshot": "embedded in PR body (model distribution panel)",
+      "rawObservations": {
+        "panel": "gpt-6-astra: 72,241 requests / 10.27B tokens / $14.48K cost",
+        "tweetText": "burned through 5 20x's, 6-astra over 10b this week; can't buy more; falling back to 5.6 Luna max"
+      },
+      "derivations": {
+        "interpretation": "Ambiguous: '5 20x's' likely = 5 Pro 20x accounts → ~2.05B Astra tokens per account-week vs adopted chatgpt_pro_20x × gpt-6-astra weekly 9.53亿 (~0.95B) → ~2.2× per-account. Single-account reading (10.27B vs 0.95B) would be 10.8× — implausible, so multi-account is the consistent reading",
+        "worthCheck": "$14.48K / 10.27B ≈ $1.41/MTok — plausible Astra list-worth; well above the round14 ~$1200–1500/wk single-account worth pool → supports multi-account reading"
+      },
+      "adoptionImpact": "context only — ambiguous account count, no quota % shown; cannot derive a pool value",
+      "caveats": ["account count interpretation unresolved", "no weekly % reading"],
+      "confidence": "unusable for adoption; context"
     }
   ],
   "summary": {
     "corroborations": [
       "claude_max_20x × opus-5.5: 81亿/wk vs adopted 75.4亿/wk (1.07×)",
-      "chatgpt_pro_20x × gpt-6-astra: 8.8–9.1M/pt vs adopted 9.53亿/wk (0.92–0.97×, two independent sources incl. Codex Quota Observatory)",
-      "claude_pro × opus-5.5 weekly ~12–14亿 chart range covers PR #46 raw figure",
-      "chatgpt_plus × gpt-5.6-sol: chart 1.6–1.8亿/wk vs adopted 1.54亿/wk"
+      "claude_pro × opus-5.5: shownotover 11.5亿/wk vs PR #46 raw 11.34亿/wk (1.01× — near-exact; PR46 worth口径 sits lower)",
+      "chatgpt_pro_20x × gpt-6-astra: log-study 8.8M/pt & Observatory 9.11M/pt vs adopted 9.53亿/wk (0.92–0.97×); qwinah chart worth figures echo adopted round14口径",
+      "chatgpt_plus × gpt-6-sol: shownotover 3.22亿/wk vs adopted 2.62亿/wk (1.23×)",
+      "chatgpt_pro_20x × gpt-5.6-sol: qwinah 12.32B/mo vs adopted 12.90B/mo (0.95×)",
+      "claude_max_20x × opus-5: qwinah 15.7B/mo vs adopted 15.7B/mo (1.00× exact)"
     ],
     "tensions": [
-      "supergrok_heavy × grok-4.7: 3.4B/30d achieved under weekly saturation vs derived 4.97B/mo (0.68×) — first independent Heavy datapoint",
-      "chatgpt_pro_20x × gpt-5.6-luna: 26亿/wk Luna-heavy measured vs 375.56亿/wk derived (0.28×) — needs a clean Luna-only saturated week",
-      "claude_pro × opus-5.5: umairzia 6.3亿/wk raw vs PR#46's 11.3亿/wk raw (0.55×) — PR#46 worth口径 sits between",
+      "supergrok × grok-4.7 weekly pool: shownotover 82.6M/wk (0.66×) + SPAC89 Heavy achieved ~0.85B/wk (0.68× of derived) — TWO independent reads below adopted 124.33M/wk round2 measurement; cluster suggests round2 base may run high",
+      "chatgpt_pro_20x × gpt-5.6-luna: log-study 2.61B Luna-heavy saturated week → 26.1亿/wk = 0.07× of derived 375.56亿/wk (0.28× of the 5x derivation); qwinah chart 60.05B/mo = 0.40× — three independent reads all far below the ×20 derivation; strongest re-measurement candidate in this batch",
+      "claude_pro × opus-5.5: umairzia 6.3亿/wk raw vs PR#46's 11.3亿/wk raw + shownotover 11.5亿/wk — two sources near 11.3–11.5亿 vs one at 6.3亿",
       "chart Luna ~40亿 labeled weekly — probable units slip vs adopted monthly figure"
     ],
-    "unusable": ["SPAC89 Claude '~$15K worth' claim — no token count, plan, or window"],
+    "unusable": [
+      "SPAC89 Claude '~$15K worth' claim — no token count, plan, or window",
+      "stephen4171127 '5 20x's, 10.27B Astra' — ambiguous account count, no quota % reading"
+    ],
     "followupDataWanted": [
       "SuperGrok Heavy panel screenshot: weekly % paired with token count (the $250-face pool has never been independently measured)",
-      "Codex Pro 20x: a Luna-saturated week (0% left) with per-model token split, to test the ×20 Luna derivation",
+      "Codex Pro 20x: a Luna-saturated week (0% left) with per-model token split, to test the ×20 Luna derivation — now the top-priority item given 3 independent low reads",
+      "SuperGrok 4.7: a second round of Grok Build windows paired with weekly-% reads (round2's 124.33M/wk now has two ~0.66–0.68× challengers)",
       "Claude Max 20x: /usage weekly % paired with ~/.claude token totals for a clean reset-anchored week",
       "Permalinks for the forwarded X posts and the 1%-study page (provenance convention)"
     ]
