@@ -584,15 +584,134 @@
       },
       "adoptionImpact": "Supports treating ANY single-account % reading as having account-level provisioning noise; quorum across accounts is required for saturation-derived pool values",
       "confidence": "medium (independent corroborating reports; none individually conclusive)"
+    },
+    {
+      "id": "openai-official-codex-limits-doc",
+      "type": "official_documentation",
+      "url": "https://developers.openai.com/codex/pricing",
+      "author": "OpenAI official Codex pricing page",
+      "rawObservations": {
+        "publishedNumbers": "per-plan message RANGES for the 5-hour window only — e.g. Luna: Plus 50-280, Pro5x 250-1400, Pro20x 1000-5600 local msgs/5h; Sol: 15-90 / 75-450 / 300-1800",
+        "weeklyDimension": "footprint reads only 'Additional weekly limits may apply' — the weekly pool is acknowledged but never sized anywhere official",
+        "rangeWidth": "within one plan the 5h range spans ~4-5.6x (Luna 20x 1000-5600) — message counts are workload-dependent, not a fixed quota"
+      },
+      "derivations": {
+        "tierRatios_5h": "mid-range Luna msgs: Plus ~165, Pro5x ~825 (5x), Pro20x ~3300 (20x) — official multipliers hold ONLY on the 5h message dimension, matching codexusage.dev",
+        "extrapolationGap": "adopted Luna 5x/20x rows derive weekly pools by applying the 5h-dimension multiplier to a measured weekly base — a dimension the docs never quantify"
+      },
+      "adoptionImpact": "Official-documentary support for the flag rationale: weekly multipliers are unpublished; the adopted derivation is an extrapolation across a dimension boundary (5h msgs -> weekly tokens)",
+      "confidence": "high (official source)"
+    },
+    {
+      "id": "anthropic-official-claude-limits-doc",
+      "type": "official_documentation",
+      "url": "https://support.claude.com/en/articles/14552983-models-usage-and-limits-in-claude-code",
+      "author": "Anthropic Help Center",
+      "rawObservations": {
+        "modelWeighting": "official: 'Opus costs several times more per turn than Sonnet' — qualitative confirmation that the meter weights by model/class, no numbers published",
+        "window": "pool 'reset on a rolling window'; /cost exists only for API-key users — subscription users get %, not tokens"
+      },
+      "adoptionImpact": "Corroborates class-weighted metering from the official side; confirms no official token figures exist for Claude plan quotas",
+      "confidence": "high (official source, qualitative)"
+    },
+    {
+      "id": "gh26975-june4-reset-baseline",
+      "type": "github_discussion_telemetry",
+      "url": "https://github.com/openai/codex/discussions/26975",
+      "author": "openai/codex discussion #26975 + embedded reddit r/codex report (2026-06)",
+      "rawObservations": {
+        "plan100_preReset": "100-150M tokens = 10-14% of $100 weekly allowance -> ~1.07-1.5B tokens/wk",
+        "plan100_postReset": "150M tokens/day = 40% of weekly allowance -> ~375M/wk implied",
+        "plan20": "$20 plan: '245 million per week using the same 5.5 Xhigh' (self-reported)",
+        "plan200_weekTotals": "same $200 user: May30-Jun3 week = 4.21B tokens (ran out); Jun6-8 week = 1.81B (ran out) -> ~2.3x capacity cut across the June-4 reset",
+        "promoContext": "'I used to get 2.5B with 2x promo and 1.2B after promo ended' on $100; 'some people have 1.5B on the same exact plan' — cross-account variance",
+        "redditRef": "r/codex/comments/1u07cu2 'limits cut in half with evidence'"
+      },
+      "derivations": {
+        "eraEffect": "the SAME plan's weekly token capacity roughly halved across the June-4 unified reset — era is a first-class confounder; a May/June read and a September read measure different pools",
+        "vs_adopted_luna20x": "post-reset ~375M-1.81B/wk vs adopted 375.56亿/wk = 0.01-0.05x raw — extreme, but consistent with the cached-input-heavy raw-token artifact"
+      },
+      "adoptionImpact": "Anchors the era timeline: quota pools are re-baselined at vendor resets; all saturation evidence must carry an era tag (pre/post Jun-4, post Jun-16, post Aug-1)",
+      "confidence": "medium (self-reported daily totals, corroborated across users; pre-telemetry-era)"
+    },
+    {
+      "id": "gh27027-june-metering-anomaly",
+      "type": "github_issue_telemetry",
+      "url": "https://github.com/openai/codex/issues/27027",
+      "author": "openai/codex issue #27027 (2026-06; Plus account)",
+      "rawObservations": {
+        "currentWeek": "35M tokens used, 36% remaining -> ~54.7M/wk implied Plus pool",
+        "priorWeek": "120M tokens used, 10% remaining -> ~133M/wk implied — ~2.4x intra-account shift across the June-4 boundary"
+      },
+      "adoptionImpact": "Plus-side raw-token read in the same 0.03-0.13x band as other raw reads; second point on the June-4 regime break",
+      "confidence": "medium"
+    },
+    {
+      "id": "gh27908-pro-350m-35pct",
+      "type": "github_issue_telemetry",
+      "url": "https://github.com/openai/codex/issues/27908",
+      "author": "openai/codex issue #27908 (2026-06-12; Pro)",
+      "rawObservations": {
+        "measured": "~350M tokens on June 12 = 35% used -> ~1B/wk implied Pro pool"
+      },
+      "derivations": {
+        "vs_adopted": "~1B/wk raw vs adopted Sol-20x ~32.3亿/wk = 0.31x; vs Luna-20x 375.56亿/wk = 0.03x"
+      },
+      "adoptionImpact": "Another raw-token-era read; plan tier (5x/20x) indistinguishable via plan_type",
+      "confidence": "medium-low (single % pair, June era)"
+    },
+    {
+      "id": "gh30002-5h-same-account-115x",
+      "type": "github_issue_telemetry",
+      "url": "https://github.com/openai/codex/issues/30002",
+      "author": "openai/codex issue #30002 (2026-06-25; Pro, upstream error-stream timestamps)",
+      "rawObservations": {
+        "discrepancy": "same Pro account hit the 5h limit at ~1.35M billed tokens (41 min) vs ~156M tokens (full 5h window) earlier the same day — ~115x",
+        "crossRefs": "#29955 #29968 #26512 #21966 #28525 #20153 — same symptom cluster on the 5h meter"
+      },
+      "derivations": {
+        "mechanismReading": "even the officially-documented 5h dimension is not token-linear — the meter has state (post-reset burn, backlog accounting) independent of billed tokens"
+      },
+      "adoptionImpact": "Kills the fallback assumption that the 5h window (the only officially-numbered dimension) is token-linear either — strengthens 'no linear pool exists on any dimension'",
+      "confidence": "medium-high (server-side timestamps captured from error stream)"
+    },
+    {
+      "id": "gh28879-june16-per-token-jump",
+      "type": "github_issue_telemetry",
+      "url": "https://github.com/openai/codex/issues/28879",
+      "author": "openai/codex issue #28879 (Plus, gpt-5.5; June 16 onset)",
+      "rawObservations": {
+        "perTokenCost": "limit-% per token jumped ~10-20x after June 16 on identical workflow; ~20K-token prompt ≈ 10-27% of 5h budget (vs 57K-token xhigh prompt at 2-3% on June 12)",
+        "sequence": "prompts logged with per-prompt % consumption — consistent acceleration, not a single outlier"
+      },
+      "adoptionImpact": "Second dated regime break (Jun-16) inside the 'post-Jun-4' era — era granularity matters at week resolution",
+      "confidence": "medium (per-prompt table, Plus)"
+    },
+    {
+      "id": "gh32591-replay-inflation-caveat",
+      "type": "github_issue_methodology",
+      "url": "https://github.com/openai/codex/issues/32591",
+      "author": "openai/codex issue #32591 (Codex desktop build 5175 incident)",
+      "rawObservations": {
+        "replayBug": "child-agent rollout files received ~1,000-3,500 replayed historical token_count events with new timestamps; naive local sums inflated into the billions",
+        "sanitized": "deduped/discarding first 2s of child rollouts: ~600 usage records ≈ 67M tokens (96% cached) across 6 threads in 30min",
+        "pollingStorm": "1,570 thread/list requests in 26 min (~60Hz bursts) — client bugs can move the meter without user work"
+      },
+      "adoptionImpact": "Methodological caveat for ALL rollout-file telemetry (incl. #36313's sums and community log studies): token totals must be deduplicated/replay-filtered; a 1-3.5K event replay per child agent can produce phantom 'billions'",
+      "confidence": "medium-high (detailed instrumentation analysis)"
     }
   ],
   "summary": {
     "mechanismFindings": [
+      "era confounder (NEW): vendor resets re-baseline the pools — June-4 unified reset cut a $100 plan from ~1.07-1.5B to ~375M raw tokens/wk and a $200 user 4.21B->1.81B (#26975); June-16 raised per-token 5h cost ~10-20x (#28879); Aug-1 reset shifted again (#36488). Cross-era comparisons are invalid; every source must be dated",
+      "official docs: OpenAI publishes ONLY 5h message ranges (4-5.6x wide within a plan) with 'additional weekly limits may apply'; Anthropic confirms class weighting qualitatively ('Opus costs several times more per turn'); xAI publishes nothing numeric — weekly token pools are officially undocumented everywhere",
       "The weekly % meter is NOT a linear raw-token pool on either vendor: Anthropic meter weights output ~857× a cache-read (Slobodianiuk controlled runs); Codex full-window capacity moved 236B→91B tokens within one week on the same plan (gh36313) and meter $-per-point accelerated 2.4× mid-window then reverted (gh38728); server-side token attribution ran ~8.7× client-visible tokens in gh40067",
       "Provisioning risk: multiple Pro 20x accounts report effective ~5x capacity while plan_type stays 'pro' (gh38157) — tier label ≠ delivered quota, so field reads of '20x' can legitimately cluster at 5x scale",
       "Weekly quota instability is systematic, not anecdote: meta-tracker gh41220 indexes 15+ depletion reports incl. a closed-client control experiment (gh37445: 0% drain over 103h47m, ~6% fixed deduction on desktop launch = background consumption)",
       "dual-口径 reconciliation (gh38367): one controlled Pro-20x workload reads 0.029x of the adopted Luna-20x raw total but 0.75x of its own worth口径 ($800/wk vs $1073/wk) — the ~26x spread between token and credit口径s on identical data is direct evidence that the bidirectional tension is a meter-weighting artifact, and that saturation reads must report token-class breakdown",
-      "account-level variance: #38157 (20x provisioned as ~5x), #40259 (same % != same tokens across accounts), #39167 (meter moved with zero client requests) — a single account's % is a noisy estimator; pool values need multi-account quorum"
+      "account-level variance: #38157 (20x provisioned as ~5x), #40259 (same % != same tokens across accounts), #39167 (meter moved with zero client requests) — a single account's % is a noisy estimator; pool values need multi-account quorum",
+      "5h meter is nonlinear too: same Pro account hit the limit at 1.35M vs 156M billed tokens (115x, #30002) — no dimension is token-linear",
+      "telemetry hygiene caveat: Codex desktop builds can replay historical token_count events into child rollouts (#32591) — all rollout-summed token totals (ours and others') need dedup/replay filtering"
     ],
     "corroborations": [
       "claude_max_20x × opus-5.5: 81亿/wk vs adopted 75.4亿/wk (1.07×)",
