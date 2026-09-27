@@ -88,11 +88,11 @@
       },
       "derivations": {
         "impliedWeeklyPoolRawTokens": "270.6M ÷ 43% ≈ 629M/wk ≈ 25.2亿/月 raw",
-        "vsOpenPR46": "PR #46 pending raw direct measurement: 151.19M = 13.333% weekly → 11.34亿/wk ≈ 45.36亿/月 raw; adopted worth口径 28.99亿/月. This source implies ~0.55× of PR46's raw weekly — tension between two n=1 panel reads; worth口径 lands between them",
+        "vsMergedPR46": "PR #46 merged raw direct measurement: 151.19M = 13.333% weekly → 11.34亿/wk ≈ 45.36亿/月 raw; adopted worth口径 28.99亿/月. This source implies ~0.55× of PR46's raw weekly — tension between two n=1 panel reads; worth口径 lands between them",
         "worthCheck": "$106.26 session cost over ~40h; weekly share 43% → run-rate ≈ $247/wk list-worth (different accounting than PR46's segment-worth method)"
       },
       "adoptionImpact": {
-        "claude_pro × claude-opus-5.5": "Second independent panel sample for the row open PR #46 is rewriting (36.09亿 → 28.99亿 worth口径). Recorded as corroborating tension — do not re-decide in this PR"
+        "claude_pro × claude-opus-5.5": "Second independent panel sample for the row upstream PR #46 merged at 28.99亿 worth口径 (from 36.09亿). Recorded as corroborating tension — do not re-decide in this PR"
       },
       "caveats": [
         "n=1; 'Weekly · all models' meter could include non-Opus tokens (session was 100% Opus but earlier sessions unknown)",
@@ -239,12 +239,12 @@
         "hisWorthClaims": "Claude Pro ~$4,000/mo API-equivalent; Codex ~$330/mo — his own estimates, recorded not adopted"
       },
       "derivations": {
-        "claude_pro_opus55": "115M ÷ 10% → 1.15B/wk = 11.5亿/wk → ~46亿/mo raw — vs open PR #46 raw direct 11.34亿/wk (151.19M=13.333%): 1.01× — near-exact corroboration of PR46's raw口径 (its worth口径 28.99亿 sits lower)",
+        "claude_pro_opus55": "115M ÷ 10% → 1.15B/wk = 11.5亿/wk → ~46亿/mo raw — vs merged PR #46 raw direct 11.34亿/wk (151.19M=13.333%): 1.01× — near-exact corroboration of PR46's raw口径 (its worth口径 28.99亿 sits lower)",
         "codex_plus_gpt6sol": "29M ÷ 9% → 322M/wk = 3.22亿/wk → ~12.9亿/mo vs adopted chatgpt_plus × gpt-6-sol 10.48亿/mo (2.62亿/wk): 1.23× — same-magnitude corroboration",
         "supergrok_grok47": "19M ÷ 23% → 82.6M/wk → 3.30亿/mo vs adopted supergrok × grok-4.7 4.97亿/mo (124.33M/wk round2 measured): 0.66× — SECOND independent read below adopted (SPAC89 batch was 0.68× on Heavy). Downward tension cluster forming on the grok-4.7 weekly pool"
       },
       "adoptionImpact": {
-        "claude_pro × claude-opus-5.5": "corroborates open PR #46 raw read (1.01×)",
+        "claude_pro × claude-opus-5.5": "corroborates merged PR #46 raw read (1.01×)",
         "chatgpt_plus × gpt-6-sol": "corroborates adopted value (1.23×)",
         "supergrok × grok-4.7 / supergrok_heavy × grok-4.7": "0.66× tension — second source below adopted"
       },
