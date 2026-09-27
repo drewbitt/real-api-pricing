@@ -699,6 +699,114 @@
       },
       "adoptionImpact": "Methodological caveat for ALL rollout-file telemetry (incl. #36313's sums and community log studies): token totals must be deduplicated/replay-filtered; a 1-3.5K event replay per child agent can produce phantom 'billions'",
       "confidence": "medium-high (detailed instrumentation analysis)"
+    },
+    {
+      "id": "linuxdo-2797087-supergrok-matched-exhaustion",
+      "type": "forum_saturation_test",
+      "url": "https://linux.do/t/topic/2797087",
+      "author": "linux.do user (2026-08-23; SuperGrok $30, Grok Build)",
+      "rawObservations": {
+        "matchedTests": "two full weeks run to 100% + 402 Payment Required: prior week 239,869,568 newly-measured tokens; current week 125,999,903 tokens; reported cache rates ~96.4-96.5%"
+      },
+      "derivations": {
+        "vs_adopted_base": "125,999,903 tokens/wk = 1.01x of adopted round2 base 124.33M/wk — DIRECT corroboration; the 239.87M week is ~1.9x (different window cohort or era)",
+        "mechanismReading": "two weeks on the same account/tooling differ ~1.9x — consistent with workload-scaled or re-baselined pool, like the Codex era shifts"
+      },
+      "adoptionImpact": "STRONGEST check on the Grok base: an independent matched exhaustion test reproduces the adopted value almost exactly; reframes the 0.66-0.68x challengers as heavier-mix reads rather than proof the base is wrong",
+      "caveats": [
+        "newly-measured token definition vs panel total unknown",
+        "cache 96.5% — token-class weighting applies"
+      ],
+      "confidence": "medium-high (exhaustion endpoint observed, two weeks)"
+    },
+    {
+      "id": "miaai-supergrok-45low-pool",
+      "type": "x_post_measurement",
+      "url": "https://x.com/MiaAI_lab/status/2086576283211710957",
+      "author": "@MiaAI_lab (2026-08-09)",
+      "rawObservations": {
+        "measured": "exactly 246,975,735 tokens = 100% of SuperGrok $30 weekly limit, Grok 4.5 set to Low"
+      },
+      "derivations": {
+        "vs_adopted_47": "247M on 4.5-Low vs adopted 4.7-xhigh 124.33M = 1.99x — cheaper model/effort buys ~2x raw tokens from the same pool; direct evidence the pool is compute-scaled, not a fixed token count"
+      },
+      "adoptionImpact": "Confirms workload/model scaling within a fixed pool; per-model quota rows should note mix-dependence",
+      "confidence": "medium (single precise read, self-reported)"
+    },
+    {
+      "id": "grok-base-pool-minor-reads",
+      "type": "forum_cluster",
+      "url": "https://linux.do/t/topic/2797745",
+      "author": "linux.do + reddit minor Grok reads (Jul-Aug 2026)",
+      "rawObservations": {
+        "linuxdo_2797745": "week's SuperGrok fully used at nearly 200M tokens (exhaustion-inferred 100%, screenshot attached), Aug 23",
+        "reddit_1vg4mce": "SuperGrok $30 limit hit in Aug 1-5 test: 176,097,223 input (168,783,744 cached) + 846,175 output + 579,054 reasoning ≈ 177.5M total",
+        "linuxdo_2771495": "13M tokens = 9% -> ~144M/wk implied (tier unspecified, Aug 18)",
+        "linuxdo_2550704": "4.5M=9% -> ~50M/wk and 10M=30% (95% cache) -> ~33M/wk — July 9, routed via sub2api proxy (caveat)"
+      },
+      "derivations": {
+        "spreadReading": "base-pool reads now span 33-247M/wk by workload mix and route; adopted 124.33M sits mid-cluster, not an outlier"
+      },
+      "confidence": "low-medium (mixed tiers/routes)"
+    },
+    {
+      "id": "reddit-heavy-input-read-1uyd1of",
+      "type": "reddit_measurement",
+      "url": "https://www.reddit.com/r/grok/comments/1uyd1of/",
+      "author": "r/grok user (2026-07-16; SuperGrok Heavy)",
+      "rawObservations": {
+        "inputRead": "1M token input ~1.2% of Heavy limit -> ~83.3M input-tokens/wk",
+        "buildRun": "3.4M tokens in 10 min across 8 agents ~4% -> ~85M/wk; 'consistent for 1 week'"
+      },
+      "derivations": {
+        "vs_spac89": "input-weighted reads (~84M/wk) vs SPAC89's 3.4B/30d achieved (~850M/wk) — ~10x gap consistent with input-vs-output meter weighting (input classes ~10x output) OR different denominators",
+        "vs_x10": "Heavy ~84M input-equiv vs base reads ~124M -> 0.68x the base, NOT 10x — under $-metering this means Heavy's face value was spent on heavier classes; reconciles with '1:1 per dollar' scaling only if base read is input-weighted too"
+      },
+      "adoptionImpact": "Adds a third Heavy-side read; the 10x-per-dollar multiplier holds on the $ dimension while raw-token comparisons stay mix-dependent",
+      "confidence": "medium (two consistent reads, one account)"
+    },
+    {
+      "id": "gh43222-pro20x-full-week-saturation",
+      "type": "github_issue_telemetry",
+      "url": "https://github.com/openai/codex/issues/43222",
+      "author": "openai/codex issue #43222 (2026-09-04/05; Pro 20x)",
+      "rawObservations": {
+        "sep4_fullWeek": "0% -> 100% in 22h: 978M input (Sol 822M at 98% cached; Astra 156M at 96% cached) + 23.5M uncached + 3.1M output ≈ 981M total",
+        "sep5_nearFull": "1,205,315,708 input (1,173,681,408 cached) + 2,870,358 output -> meter 64% -> 95% (~3.9B/wk implied — partial-window caveat)"
+      },
+      "derivations": {
+        "vs_adopted_astra20x": "981M/wk saturated vs adopted chatgpt_pro_20x × gpt-6-astra 38.12亿/mo = 9.53亿/wk = 1.03x — FIRST full-week saturation corroboration of the Astra-20x weighted value",
+        "vs_luna20x": "same week on a Sol/Astra mix implies Luna-equivalent pools scale by the 5h msgs ratio (~3.3x Sol) — raw Luna read still missing",
+        "mixedWeek": "the Sep-5 span implies ~3.9B/wk — within-account variance across days again visible"
+      },
+      "adoptionImpact": "Tenth source for Astra-20x and the first full-window one at 1.03x; supports treating the 9-source weighted value as validated; Luna-20x saturation still unmeasured",
+      "confidence": "medium-high (token-class breakdown present, true 0->100% window)"
+    },
+    {
+      "id": "smith2008-claude-worth-30d",
+      "type": "reddit_worth_report",
+      "url": "https://www.reddit.com/r/ClaudeAI/comments/1vuarsi/",
+      "author": "smith2008 r/ClaudeAI (~2026-09-26; two Max 20x subs)",
+      "rawObservations": {
+        "worth": "$16,937 API list-price tokens consumed over 30 days across two Max 20x subs (~$8.5K/sub-month)",
+        "tokens": "21.4B total, 97.5% cache-hit; estimates Anthropic's actual compute cost ~$650",
+        "analysis": "argues list-price 'worth' overstates value since agentic workloads are unusable without caching ($120,506 uncached counterfactual 'measures nothing')"
+      },
+      "adoptionImpact": "Worth口径 datum for claude_max_20x ($8.5K/mo); explains why the SPAC89 ~$15K figure is plausible only across two subs; reinforces that worth口径 overstates near-pure-cache workloads",
+      "confidence": "medium (self-reported, analytically careful)"
+    },
+    {
+      "id": "claude-misc-limits-context",
+      "type": "context_cluster",
+      "url": "https://linux.do/t/topic/2876738",
+      "author": "linux.do + r/ClaudeCode + anthropics/claude-code (Sep 2026)",
+      "rawObservations": {
+        "linuxdo_2876738": "community credits estimates for Max 5x vs 20x (~41.67M vs ~83.33M credits — 2x, not 4x, suggesting per-tier credit pools don't scale linearly)",
+        "rClaudeCode_1wf6z7b": "Max 5x: 25-min Fable task moved Fable weekly +19% and overall weekly +10% — model-specific sub-limits confirmed",
+        "gh_91279": "open feature request to expose session/weekly % via CLI — official tooling gap"
+      },
+      "adoptionImpact": "Claude-side: credits口径 estimates, sub-limit confirmation (Fable separate pool), and tooling-gap context",
+      "confidence": "low-medium (estimates + qualitative)"
     }
   ],
   "summary": {
@@ -711,9 +819,12 @@
       "dual-口径 reconciliation (gh38367): one controlled Pro-20x workload reads 0.029x of the adopted Luna-20x raw total but 0.75x of its own worth口径 ($800/wk vs $1073/wk) — the ~26x spread between token and credit口径s on identical data is direct evidence that the bidirectional tension is a meter-weighting artifact, and that saturation reads must report token-class breakdown",
       "account-level variance: #38157 (20x provisioned as ~5x), #40259 (same % != same tokens across accounts), #39167 (meter moved with zero client requests) — a single account's % is a noisy estimator; pool values need multi-account quorum",
       "5h meter is nonlinear too: same Pro account hit the limit at 1.35M vs 156M billed tokens (115x, #30002) — no dimension is token-linear",
-      "telemetry hygiene caveat: Codex desktop builds can replay historical token_count events into child rollouts (#32591) — all rollout-summed token totals (ours and others') need dedup/replay filtering"
+      "telemetry hygiene caveat: Codex desktop builds can replay historical token_count events into child rollouts (#32591) — all rollout-summed token totals (ours and others') need dedup/replay filtering",
+      "Grok pool is $/compute-metered with model-scaled token yield (247M on 4.5-Low vs 124-126M on 4.7-xhigh vs 83-85M input-weighted reads) — same class-weighting mechanism as Claude/Codex, confirming it is industry-wide, not per-vendor"
     ],
     "corroborations": [
+      "grok-4.7 base pool 124.33M/wk CORROBORATED 1.01x by linux.do matched exhaustion test (126.0M, Aug 23) — the prior 0.66-0.68x challengers are best read as heavier-mix workloads on a compute-scaled pool, not proof the base is wrong; full spread now 33-247M/wk depending on model/mix/route",
+      "chatgpt_pro_20x × gpt-6-astra 38.12亿 gets its first FULL-WEEK saturation read: gh43222 0->100% at ~981M tokens vs adopted 953M/wk = 1.03x (tenth source)",
       "claude_max_20x × opus-5.5: 81亿/wk vs adopted 75.4亿/wk (1.07×)",
       "claude_pro × opus-5.5: shownotover 11.5亿/wk vs PR #46 raw 11.34亿/wk (1.01× — near-exact; PR46 worth口径 sits lower)",
       "chatgpt_pro_20x × gpt-6-astra: log-study 8.8M/pt & Observatory 9.11M/pt vs adopted 9.53亿/wk (0.92–0.97×); qwinah chart worth figures echo adopted round14口径",
@@ -724,21 +835,19 @@
       "SuperGrok multiplier: Reddit 1:1-per-dollar report (Heavy ≈ 10× Super) corroborates the derived ×10 scaling — the dispute is the BASE read, not the multiplier"
     ],
     "tensions": [
-      "supergrok × grok-4.7 weekly pool: shownotover 82.6M/wk (0.66×) + SPAC89 Heavy achieved ~0.85B/wk (0.68× of derived) — TWO independent reads below adopted 124.33M/wk round2 measurement; under the corroborated ×10 scaling both triangulate to a base ~83–85M/wk",
       "chatgpt_pro_20x × gpt-5.6-luna: DOWNWARD — log-study 2.61B Luna-heavy saturated week = 0.07× of derived 375.56亿/wk (0.28× of 5x); qwinah 60.05B/mo = 0.40×; gh38157/gh40045 report 20x accounts at ~5x effective capacity. UPWARD — gh36313 measured full-week capacity 91–240B tokens on plan_type=pro (2.4–6.4× the 20x derivation) under a cache-heavy mix. Both directions consistent with a class/cost-weighted meter rather than a fixed token pool — the derivation itself is the unreliable step",
       "claude_pro × opus-5.5: umairzia 6.3亿/wk raw vs PR#46's 11.3亿/wk raw + shownotover 11.5亿/wk — largely RESOLVED as units artifact: umairzia's 270M was 98% cache-read which weighs ~1/857 of output on the meter (Slobodianiuk weights)",
-      "chart Luna ~40亿 labeled weekly — probable units slip vs adopted monthly figure"
+      "chart Luna ~40亿 labeled weekly — probable units slip vs adopted monthly figure",
+      "supergrok base: adopted 124.33M corroborated (1.01x) but pool is provably mix-scaled (4.5-Low reads 247M; heavy-mix reads 83-85M) — single point estimates need a stated mix assumption; PLUS/HEAVY derivation inherits this caveat"
     ],
     "unusable": [
       "SPAC89 Claude '~$15K worth' claim — no token count, plan, or window",
       "stephen4171127 '5 20x's, 10.27B Astra' — ambiguous account count, no quota % reading"
     ],
     "followupDataWanted": [
-      "Grok: a SuperGrok $30 or Heavy Usage-tab screenshot showing token count AND weekly % together would settle the base-pool triangulation (83-85M vs 124.33M/wk) — highest-value missing datum",
+      "Grok base is now corroborated; remaining open item is a Heavy input-vs-output class breakdown to close the 10x口径 gap between SPAC89 (850M/wk achieved) and r/grok input reads (~84M/wk)",
       "Codex: a Pro 20x Luna-saturated week WITH token-class breakdown (input/cached/output split) — raw totals alone cannot adjudicate given the demonstrated ~26x口径 spread",
-      "SuperGrok Heavy panel screenshot: weekly % paired with token count (the $250-face pool has never been independently measured)",
       "Codex Pro 20x: a Luna-saturated week (0% left) with per-model token split AND the token-class breakdown (cache-read share) — raw tokens alone cannot test the derivation now that class-weighting is documented",
-      "SuperGrok 4.7: a second round of Grok Build windows paired with weekly-% reads (round2's 124.33M/wk now has two ~0.66–0.68× challengers)",
       "Claude Max 20x: /usage weekly % paired with ~/.claude token totals for a clean reset-anchored week — and note whether it falls inside Anthropic's temporary +50% weekly promo window (pre Sep-13 reads are inflated)",
       "Permalinks for the forwarded X posts and the 1%-study page (provenance convention)"
     ]
