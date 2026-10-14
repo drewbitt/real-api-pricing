@@ -784,7 +784,7 @@ COMMAND_CODE_GOAT_MODELS = (
     ("glm-5.2", 70, 0.26, 1.4, 4.4, "官网三段价"),
     ("hy3", 70, 0.035, 0.14, 0.58, "官网三段价"),
     ("qwen3.8-27b", 70, 0.04, 0.4, 3.0, "官网三段价"),
-    ("deepseek-v4.1-flash", 60, 0.003, 0.15, 0.60, "官网 allowance 永久 $60；Off-Peak；Peak=2×保留在 research variants"),
+    ("deepseek-v4.1-flash", 80, 0.003, 0.15, 0.60, "官网 allowance $60->$80（限时$100至10/16，促销不采）；effective min(70,80)=$70；Off-Peak；Peak=2×保留在 research variants；goat-v41-flash-80-xsub-round1-2026-10-13.json"),
     ("kimi-k2.7-code", 60, 0.19, 0.95, 4.0, "官网三段价"),
     ("deepseek-v4-flash", 60, 0.003, 0.15, 0.60, "back in official catalog as 'V4 Flash (latest)' at $60 (restored after the 9/10 removal); Off-Peak; Peak=2x kept in research variants; goat-opencode-catalogs-round3-2026-09-30.json"),
     ("deepseek-v4.1-flash-fast", 60, 0.016, 0.16, 0.58, "new official row 'V4.1 Flash Fast' at $60 (off-peak $0.016/$0.16/$0.58, 57,500 requests/mo); goat-opencode-catalogs-round3-2026-09-30.json"),
@@ -858,10 +858,11 @@ COMMAND_CODE_GOAT_DEEPSEEK_SOURCE = (
 )
 COMMAND_CODE_GOAT_NOTES = {
     "deepseek-v4.1-flash": (
-        "41.408→62.112亿：min(共享月池$70, 模型allowance $60) ÷ 统一标准负载加权价；"
+        "62.112→72.464亿：min(共享月池$70, 模型allowance $80) ÷ 统一标准负载加权价；"
         "官网闲时 cached/input/output=$0.003/$0.15/$0.60，高峰2×。"
-        "模型月allowance由$40升为永久$60（官网估算请求154,000/月与$60档 V4 Flash latest 完全同档，确认永久）。"
-        "官方请求数仅作交叉检查，不再作为额度主值；忽略 processing fee；同套餐各模型额度不可相加"
+        "模型月allowance $40→$60（9/30确认永久）→$80（2026-10-13，官网列示$80并挂$100限时至10/16，临时促销不采）。"
+        "官方请求数仅作交叉检查，不再作为额度主值；忽略 processing fee；同套餐各模型额度不可相加；"
+        "goat-v41-flash-80-xsub-round1-2026-10-13.json"
     ),
     "deepseek-v4-flash": (
         "restored: official 'V4 Flash (latest)' allowance $60 (reverified 2026-09-30; removed 09-10 as confirmed offline); "
