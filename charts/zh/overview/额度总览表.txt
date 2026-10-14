@@ -71,22 +71,22 @@
 62    Cursor Ultra                        USD 200                 Grok 4.5                      77.37       0.02585  medium
 63    GLM Coding Pro (v3 ¥538) 闲时       CNY 538                 GLM 5.3 Flash                 74.92       0.01059  high
 64    GLM Coding Pro (v2 ¥149) 闲时       CNY 149                 GLM 5.3 Flash                 74.92       0.00293  high
-65    Droid Max                           USD 200                 GLM 5.3                       72.171      0.02771  medium
-66    Droid Max                           USD 200                 GLM 5.2                       72.171      0.02771  medium
-67    MiniMax Token Plan Ultra            CNY 469                 MiniMax M3                    71          0.00974  high
-68    ChatGPT Plus                        USD 20                  GPT 5.6 Luna                  70.58       0.00283  high
-69    MiMo Token Plan Pro 日间            ¥329（国际 $50）        MiMo V2.6 Flash               69.85       0.00716  medium
-70    MiMo Token Plan Pro 日间            ¥329（国际 $50）        MiMo V2.5                     69.85       0.00716  medium
-71    Step Plan Plus (¥99)                CNY 99                  Step 3.5 Flash                69.264      0.00211  medium
-72    Cursor Ultra (Composer Fast)        USD 200                 Composer 2.5                  68.841      0.02905  medium
-73    Droid Max                           USD 200                 Mistral Medium 3.5            67.36       0.02969  medium
-74    Devin Max                           USD 200                 Claude Opus 5.5               66.9        0.0299   medium
-75    Claude Pro                          USD 20                  Claude Sonnet 5               64.725      0.00309  medium
-76    MiMo Token Plan Max 日间            ¥659（国际 $100）       MiMo V2.6 Pro                 63.44       0.01576  medium
-77    MiMo Token Plan Max 日间            ¥659（国际 $100）       MiMo V2.5 Pro                 63.44       0.01576  medium
-78    Ollama Max                          USD 100                 DeepSeek V4 Pro               62.84       0.01591  medium
-79    OpenCode Go                         USD 10                  DeepSeek V4.1 Flash           62.112      0.00161  medium
-80    Command Code GOAT                   USD 10                  DeepSeek V4.1 Flash           62.112      0.00161  medium
+65    Command Code GOAT                   USD 10                  DeepSeek V4.1 Flash           72.464      0.00138  medium
+66    Droid Max                           USD 200                 GLM 5.3                       72.171      0.02771  medium
+67    Droid Max                           USD 200                 GLM 5.2                       72.171      0.02771  medium
+68    MiniMax Token Plan Ultra            CNY 469                 MiniMax M3                    71          0.00974  high
+69    ChatGPT Plus                        USD 20                  GPT 5.6 Luna                  70.58       0.00283  high
+70    MiMo Token Plan Pro 日间            ¥329（国际 $50）        MiMo V2.6 Flash               69.85       0.00716  medium
+71    MiMo Token Plan Pro 日间            ¥329（国际 $50）        MiMo V2.5                     69.85       0.00716  medium
+72    Step Plan Plus (¥99)                CNY 99                  Step 3.5 Flash                69.264      0.00211  medium
+73    Cursor Ultra (Composer Fast)        USD 200                 Composer 2.5                  68.841      0.02905  medium
+74    Droid Max                           USD 200                 Mistral Medium 3.5            67.36       0.02969  medium
+75    Devin Max                           USD 200                 Claude Opus 5.5               66.9        0.0299   medium
+76    Claude Pro                          USD 20                  Claude Sonnet 5               64.725      0.00309  medium
+77    MiMo Token Plan Max 日间            ¥659（国际 $100）       MiMo V2.6 Pro                 63.44       0.01576  medium
+78    MiMo Token Plan Max 日间            ¥659（国际 $100）       MiMo V2.5 Pro                 63.44       0.01576  medium
+79    Ollama Max                          USD 100                 DeepSeek V4 Pro               62.84       0.01591  medium
+80    OpenCode Go                         USD 10                  DeepSeek V4.1 Flash           62.112      0.00161  medium
 81    Command Code GOAT                   USD 10                  DeepSeek V4 Flash             62.112      0.00161  medium
 82    Ollama Pro                          USD 20                  DeepSeek V4.1 Flash           62.112      0.00322  medium
 83    Claude Pro                          USD 20                  Claude Sonnet 5.5             61.08       0.00327  low

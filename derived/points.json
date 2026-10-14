@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-13",
+ "generatedAt": "2026-10-14",
  "mix": {
   "cache": 0.97,
   "input": 0.025,
@@ -22895,14 +22895,14 @@
     "currency": "USD"
    },
    "price_usd": 10.0,
-   "monthly_yi": 62.112,
-   "real_usd_per_mtok": 0.0016099948,
+   "monthly_yi": 72.464,
+   "real_usd_per_mtok": 0.0013799956,
    "list_blended_usd_per_mtok": 0.0193,
-   "d": 0.0833,
+   "d": 0.0714,
    "confidence": "medium",
    "tier": "main",
    "source": "https://commandcode.ai/docs/plans/goat 官方每模型 allowance 与三段价；https://commandcode.ai/pricing；$10→$70 credits；command-code-goat-deepseek-round2-2026-09-30.json",
-   "note": "41.408→62.112亿：min(共享月池$70, 模型allowance $60) ÷ 统一标准负载加权价；官网闲时 cached/input/output=$0.003/$0.15/$0.60，高峰2×。模型月allowance由$40升为永久$60（官网估算请求154,000/月与$60档 V4 Flash latest 完全同档，确认永久）。官方请求数仅作交叉检查，不再作为额度主值；忽略 processing fee；同套餐各模型额度不可相加",
+   "note": "62.112→72.464亿：min(共享月池$70, 模型allowance $80) ÷ 统一标准负载加权价；官网闲时 cached/input/output=$0.003/$0.15/$0.60，高峰2×。模型月allowance $40→$60（9/30确认永久）→$80（2026-10-13，官网列示$80并挂$100限时至10/16，临时促销不采）。官方请求数仅作交叉检查，不再作为额度主值；忽略 processing fee；同套餐各模型额度不可相加；goat-v41-flash-80-xsub-round1-2026-10-13.json",
    "unmetered": false,
    "promo_until": null,
    "data_date": "2026-09-30",

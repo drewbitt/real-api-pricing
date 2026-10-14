@@ -71,22 +71,22 @@ No.  Plan                                   Monthly fee             Served model
 62   Cursor Ultra                           USD 200                 Grok 4.5                      7.737               0.02585   medium
 63   GLM Coding Pro (v3 ¥538) Off-peak      CNY 538                 GLM 5.3 Flash                 7.492               0.01059   high
 64   GLM Coding Pro (v2 ¥149) Off-peak      CNY 149                 GLM 5.3 Flash                 7.492               0.00293   high
-65   Droid Max                              USD 200                 GLM 5.3                       7.2171              0.02771   medium
-66   Droid Max                              USD 200                 GLM 5.2                       7.2171              0.02771   medium
-67   MiniMax Token Plan Ultra               CNY 469                 MiniMax M3                    7.1                 0.00974   high
-68   ChatGPT Plus                           USD 20                  GPT 5.6 Luna                  7.058               0.00283   high
-69   MiMo Token Plan Pro (Day)              $50 · CN ¥329           MiMo V2.6 Flash               6.985               0.00716   medium
-70   MiMo Token Plan Pro (Day)              $50 · CN ¥329           MiMo V2.5                     6.985               0.00716   medium
-71   Step Plan Plus (¥99)                   CNY 99                  Step 3.5 Flash                6.9264              0.00211   medium
-72   Cursor Ultra (Composer Fast)           USD 200                 Composer 2.5                  6.8841              0.02905   medium
-73   Droid Max                              USD 200                 Mistral Medium 3.5            6.736               0.02969   medium
-74   Devin Max                              USD 200                 Claude Opus 5.5               6.69                0.0299    medium
-75   Claude Pro                             USD 20                  Claude Sonnet 5               6.4725              0.00309   medium
-76   MiMo Token Plan Max (Day)              $100 · CN ¥659          MiMo V2.6 Pro                 6.344               0.01576   medium
-77   MiMo Token Plan Max (Day)              $100 · CN ¥659          MiMo V2.5 Pro                 6.344               0.01576   medium
-78   Ollama Max                             USD 100                 DeepSeek V4 Pro               6.284               0.01591   medium
-79   OpenCode Go                            USD 10                  DeepSeek V4.1 Flash           6.2112              0.00161   medium
-80   Command Code GOAT                      USD 10                  DeepSeek V4.1 Flash           6.2112              0.00161   medium
+65   Command Code GOAT                      USD 10                  DeepSeek V4.1 Flash           7.2464              0.00138   medium
+66   Droid Max                              USD 200                 GLM 5.3                       7.2171              0.02771   medium
+67   Droid Max                              USD 200                 GLM 5.2                       7.2171              0.02771   medium
+68   MiniMax Token Plan Ultra               CNY 469                 MiniMax M3                    7.1                 0.00974   high
+69   ChatGPT Plus                           USD 20                  GPT 5.6 Luna                  7.058               0.00283   high
+70   MiMo Token Plan Pro (Day)              $50 · CN ¥329           MiMo V2.6 Flash               6.985               0.00716   medium
+71   MiMo Token Plan Pro (Day)              $50 · CN ¥329           MiMo V2.5                     6.985               0.00716   medium
+72   Step Plan Plus (¥99)                   CNY 99                  Step 3.5 Flash                6.9264              0.00211   medium
+73   Cursor Ultra (Composer Fast)           USD 200                 Composer 2.5                  6.8841              0.02905   medium
+74   Droid Max                              USD 200                 Mistral Medium 3.5            6.736               0.02969   medium
+75   Devin Max                              USD 200                 Claude Opus 5.5               6.69                0.0299    medium
+76   Claude Pro                             USD 20                  Claude Sonnet 5               6.4725              0.00309   medium
+77   MiMo Token Plan Max (Day)              $100 · CN ¥659          MiMo V2.6 Pro                 6.344               0.01576   medium
+78   MiMo Token Plan Max (Day)              $100 · CN ¥659          MiMo V2.5 Pro                 6.344               0.01576   medium
+79   Ollama Max                             USD 100                 DeepSeek V4 Pro               6.284               0.01591   medium
+80   OpenCode Go                            USD 10                  DeepSeek V4.1 Flash           6.2112              0.00161   medium
 81   Command Code GOAT                      USD 10                  DeepSeek V4 Flash             6.2112              0.00161   medium
 82   Ollama Pro                             USD 20                  DeepSeek V4.1 Flash           6.2112              0.00322   medium
 83   Claude Pro                             USD 20                  Claude Sonnet 5.5             6.108               0.00327   low
